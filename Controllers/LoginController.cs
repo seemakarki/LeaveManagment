@@ -8,7 +8,7 @@ using LeaveManagment.Models;
 namespace LeaveManagment.Controllers
 {
     [ApiController]
-    [Route("Login")]
+    [Route("login")]
     public class LoginController : ControllerBase
     {
         private readonly LeaveContext _context;

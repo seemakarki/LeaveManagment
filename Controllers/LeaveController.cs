@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace LeaveManagment.Controllers
 {
     [ApiController]
-    [Route("employee")]
+    [Route("leave")]
     public class LeaveController : ControllerBase
     {
         private readonly LeaveContext _context;
@@ -17,9 +17,9 @@ namespace LeaveManagment.Controllers
             _context = context;
         }
         [HttpPost]
-        public  async Task<ActionResult<int>> PostLeave(Leave model)
+        public async Task<ActionResult<int>> PostLeave(Leave model)
         {
-            if(model.Id==0)
+            if (model.Id == 0)
             {
                 model.CreatedOn = DateTime.Now;
                 _context.Add(model);
@@ -33,10 +33,11 @@ namespace LeaveManagment.Controllers
             return model.Id;
         }
 
+        [HttpGet]
         public async Task<Leave> GetLeave(int id)
         {
 
-            var data = _context.leave.FirstOrDefault(x=>x.Id==id);
+            var data = _context.leave.FirstOrDefault(x => x.Id == id);
             return data;
         }
     }

@@ -33,6 +33,7 @@ namespace LeaveManagment.Controllers
             return model.Id;
         }
 
+        [HttpGet]
         public async Task<Salary> GetSalary(int id)
         {
 

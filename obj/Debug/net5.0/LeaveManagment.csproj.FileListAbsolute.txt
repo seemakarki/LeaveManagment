@@ -5,7 +5,6 @@ C:\project\LeaveManagment\bin\Debug\net5.0\LeaveManagment.deps.json
 C:\project\LeaveManagment\bin\Debug\net5.0\LeaveManagment.runtimeconfig.json
 C:\project\LeaveManagment\bin\Debug\net5.0\LeaveManagment.runtimeconfig.dev.json
 C:\project\LeaveManagment\bin\Debug\net5.0\LeaveManagment.dll
-C:\project\LeaveManagment\bin\Debug\net5.0\ref\LeaveManagment.dll
 C:\project\LeaveManagment\bin\Debug\net5.0\LeaveManagment.pdb
 C:\project\LeaveManagment\bin\Debug\net5.0\Microsoft.OpenApi.dll
 C:\project\LeaveManagment\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
@@ -33,3 +32,7 @@ C:\project\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.DependencyInject
 C:\project\LeaveManagment\bin\Debug\net5.0\Npgsql.dll
 C:\project\LeaveManagment\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\project\LeaveManagment\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\project\LeaveManagment\bin\Debug\net5.0\ClientApp\package-lock.json
+C:\project\LeaveManagment\bin\Debug\net5.0\ClientApp\package.json
+C:\project\LeaveManagment\bin\Debug\net5.0\ClientApp\public\manifest.json
+C:\project\LeaveManagment\obj\Debug\net5.0\refint\LeaveManagment.dll

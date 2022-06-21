@@ -21,7 +21,7 @@ namespace LeaveManagment
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls("http://localhost:5040");
+                    webBuilder.UseUrls("http://localhost:5002");
                 });
     }
 }
