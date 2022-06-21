@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\project\\LeaveManagment\\LeaveManagment.csproj": {}
+    "C:\\Projects\\LeaveManagment\\LeaveManagment.csproj": {}
   },
   "projects": {
-    "C:\\project\\LeaveManagment\\LeaveManagment.csproj": {
+    "C:\\Projects\\LeaveManagment\\LeaveManagment.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\LeaveManagment\\LeaveManagment.csproj",
+        "projectUniqueName": "C:\\Projects\\LeaveManagment\\LeaveManagment.csproj",
         "projectName": "LeaveManagment",
-        "projectPath": "C:\\project\\LeaveManagment\\LeaveManagment.csproj",
+        "projectPath": "C:\\Projects\\LeaveManagment\\LeaveManagment.csproj",
         "packagesPath": "C:\\Users\\seema\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\LeaveManagment\\obj\\",
+        "outputPath": "C:\\Projects\\LeaveManagment\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\seema\\AppData\\Roaming\\NuGet\\NuGet.Config",
