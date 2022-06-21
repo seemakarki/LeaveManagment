@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\seema\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\seema\\.nuget\\packages"
+    ]
+  }
+}
