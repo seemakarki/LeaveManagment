@@ -1,4 +1,6 @@
-﻿using LeaveManagment.Models;
+﻿using LeaveManagment.Entity;
+using LeaveManagment.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,9 +14,14 @@ namespace LeaveManagment.Controllers
     public class RegistrationController : ControllerBase
     {
         private readonly LeaveContext _context;
-       public RegistrationController(LeaveContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        public RegistrationController(LeaveContext context,UserManager<IdentityUser> userManager,
+                              SignInManager<IdentityUser> signInManager)
         {
             _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpPost]
@@ -22,7 +29,7 @@ namespace LeaveManagment.Controllers
         {
             if (model == null)
                 return Ok(false);
-          _context.Add(new Registration
+            _context.Add(new Registration
             {
                 FirstName = model.FirstName,
                 LastName = model.LastName,
@@ -30,7 +37,7 @@ namespace LeaveManagment.Controllers
                 Password = model.Password,
                 CreatedOn = DateTime.Now
             });
-             await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return Ok(true);
 
         }

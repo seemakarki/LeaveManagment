@@ -40,7 +40,6 @@ C:\Projects\LeaveManagment\bin\Debug\net5.0\appsettings.Development.json
 C:\Projects\LeaveManagment\bin\Debug\net5.0\appsettings.json
 C:\Projects\LeaveManagment\bin\Debug\net5.0\ClientApp\package-lock.json
 C:\Projects\LeaveManagment\bin\Debug\net5.0\ClientApp\package.json
-C:\Projects\LeaveManagment\bin\Debug\net5.0\ClientApp\public\manifest.json
 C:\Projects\LeaveManagment\bin\Debug\net5.0\LeaveManagment.exe
 C:\Projects\LeaveManagment\bin\Debug\net5.0\LeaveManagment.deps.json
 C:\Projects\LeaveManagment\bin\Debug\net5.0\LeaveManagment.runtimeconfig.json

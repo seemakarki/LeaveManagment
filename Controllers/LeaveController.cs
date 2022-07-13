@@ -1,3 +1,4 @@
+using LeaveManagment.Entity;
 using LeaveManagment.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LeaveManagment.Models;
+using LeaveManagment.Entity;
 
 namespace LeaveManagment.Controllers
 {

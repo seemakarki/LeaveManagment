@@ -15,6 +15,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using LeaveManagment.Models;
+using LeaveManagment.Entity;
 
 namespace LeaveManagment
 {
@@ -33,10 +36,12 @@ namespace LeaveManagment
 
             services.AddControllers();
 
+
             var connectionString = Configuration["DbContextSettings:ConnectionString"];
             services.AddDbContext<LeaveContext>(
                 opts => opts.UseNpgsql(connectionString)
             );
+          services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<LeaveContext>();
 
             services.AddSwaggerGen(c =>
             {
@@ -45,7 +50,7 @@ namespace LeaveManagment
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,LeaveContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, LeaveContext context)
         {
             if (env.IsDevelopment())
             {
@@ -53,7 +58,7 @@ namespace LeaveManagment
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LeaveManagment v1"));
             }
-            
+
             context.Database.EnsureCreated();
             app.UseHttpsRedirection();
 

@@ -1,14 +1,12 @@
-﻿using LeaveManagment.Models;
+﻿using LeaveManagment.Entity;
+using LeaveManagment.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace LeaveManagment
 {
-    public class LeaveContext : DbContext
+    public class LeaveContext : IdentityDbContext<Registration>
+
     {
         public LeaveContext(DbContextOptions<LeaveContext> options)
             : base(options)
@@ -52,6 +50,12 @@ namespace LeaveManagment
             builder.Entity<Registration>(entity =>
             {
                 entity.ToTable("registration", "leave");
+
+
+            });
+            builder.Entity<Login>(entity =>
+            {
+                entity.ToTable("login", "leave");
 
 
             });

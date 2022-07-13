@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LeaveManagment.Models
+namespace LeaveManagment.Entity
 {
-    public class Login
+    public class Login 
+
     {
         public int Id { get; set; }
         public string UserName { get; set; }

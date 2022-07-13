@@ -1,84 +1,110 @@
-# Logster - login/register-page-app
+# React Typescript Login example with Axios and Web API
 
-> Simple login/register-page-app created with React js.
+Build React Typescript Login and Registration example with React Router, Axios and Bootstrap (without Redux):
+- JWT Authentication Flow for User Signup & User Login
+- Project Structure for React Typescript Authentication (without Redux) with React Router & Axios
+- Creating React Components with Form Validation using Formik and Yup
+- React Typescript Components for accessing protected Resources (Authorization)
+- Dynamic Navigation Bar in React Typescript App
 
-Logster is a React app that has a Login, Register and Reset password features. This is just the Front-end of the app, no Back-end.
+For instruction, please visit:
+> [React Typescript Login and Registration example](https://bezkoder.com/react-typescript-login-example/)
 
-## Table of contents
-* [Functionalities](#functionalities)
-* [Technologies](#technologies)
-* [Live App](#live-app)
-* [Packages & Libraries](#packages-&-libraries)
-* [Contributing](#contributing)
-* [Support](#support)
-* [Final Words](#final-words)
-* [License](#license)
+Signup Page:
 
-## Functionalities
+![react-typescript-login-example-signup](react-typescript-login-example-signup.png)
 
-* Login with username and password
-* Create an account
-* Reset password
+Form Validation:
 
-## Technologies
+![react-typescript-login-example-form-validation](react-typescript-login-example-form-validation.png)
 
-* React js
-* HTML5
-* CSS3
+Login Page:
 
-## Live App
+![react-typescript-login-example-login](react-typescript-login-example-login.png)
 
-To view and test the app you can visit this [link](https://logsterapp.netlify.com/).
+Profile Page:
 
-## Packages & Libraries
+![react-typescript-login-example-profile-page](react-typescript-login-example-profile-page.png)
 
-* [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+This React Client works well with following back-end Server:
+> [Spring Boot: JWT Authentication & Authorization with MySQL](https://bezkoder.com/spring-boot-jwt-authentication/)
 
-## Contributing
+> [Spring Boot: JWT Authentication & Authorization with PostgreSQL](https://www.bezkoder.com/spring-boot-security-postgresql-jwt-authentication/)
 
-Pull requests are welcome. Please feel free to submit an issue first to discuss what you would like to change.
+> [Spring Boot: JWT Authentication & Authorization with MongoDB](https://bezkoder.com/spring-boot-jwt-auth-mongodb/)
 
-The process to start is simple, just make sure you have [Node js](https://nodejs.org/en/) installed in your computer. 
+> [Node Express: JWT Authentication & Authorization with MySQL](https://bezkoder.com/node-js-jwt-authentication-mysql/)
 
-First you need to go to project's main directory which contains package.json file
+> [Node Express: JWT Authentication & Authorization with PostgreSQL](https://bezkoder.com/node-js-jwt-authentication-postgresql/)
 
-```bash
-    git clone [Repository]
+> [Node Express: WT Authentication & Authorization with MongoDB](https://bezkoder.com/node-js-mongodb-auth-jwt/)
 
-    cd [Repository-Directory]
+Related Posts:
+> [React Typescript CRUD example with Axios and Web API](https://bezkoder.com/react-typescript-axios/)
 
-    npm install
+> [React Hooks Typescript CRUD example with Axios and Web API](https://bezkoder.com/react-typescript-api-call/)
 
-    npm start
+> [React (Javascript) CRUD example to consume Web API](https://bezkoder.com/react-crud-web-api/)
+
+> [React Hook Form Typescript example with Validation](https://www.bezkoder.com/react-hook-form-typescript/)
+
+Fullstack with Node Express:
+> [React + Node Express + MySQL](https://bezkoder.com/react-node-express-mysql/)
+
+> [React + Node Express + PostgreSQL](https://bezkoder.com/react-node-express-postgresql/)
+
+> [React + Node Express + MongoDB](https://bezkoder.com/react-node-express-mongodb-mern-stack/)
+
+Fullstack with Spring Boot:
+> [React + Spring Boot + MySQL](https://bezkoder.com/react-spring-boot-crud/)
+
+> [React + Spring Boot + PostgreSQL](https://bezkoder.com/spring-boot-react-postgresql/)
+
+> [React + Spring Boot + MongoDB](https://bezkoder.com/react-spring-boot-mongodb/)
+
+Fullstack with Django:
+
+> [React + Django Rest Framework](https://bezkoder.com/django-react-axios-rest-framework/)
+
+Serverless:
+> [React Typescript Firebase example: Build CRUD App](https://www.bezkoder.com/firebase-typescript-react/)
+
+> [React Typescript Firestore example: Build CRUD App](https://www.bezkoder.com/react-typescript-firestore/)
+
+Integration (run back-end & front-end on same server/port)
+> [How to integrate React with Spring Boot](https://bezkoder.com/integrate-reactjs-spring-boot/)
+
+> [Integrate React with Node Express on same Server/Port](https://bezkoder.com/integrate-react-express-same-server-port/)
+
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Set port
+.env
 ```
+PORT=8081
+```
+
+## Project setup
+
+In the project directory, you can run:
+
+```
+npm install
+# or
+yarn install
+```
+
 or
-```bash
-    git clone [Repository]
 
-    cd [Repository-Directory]
+### Compiles and hot-reloads for development
 
-    yarn install
-
-    yarn start
 ```
-.. happy Coding..!!
+npm start
+# or
+yarn start
+```
 
+Open [http://localhost:8081](http://localhost:8081) to view it in the browser.
 
-
-## Support
-
-Reach out to me at one of the following places!
-
-- Website at <a href="https://izemspot.netlify.com" target="_blank">`izemspot.netlify.com`</a>
-- Gmail <a href="mailto:zmr.ilyas@gmail.com" target="_blank">`zmr.ilyas@gmail.com`</a>
-
-
-
-## Final Words
-
-If you like the app, please give it a star. It will mean a lot for me :)
-
-## License
-
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2019 © <a href="https://izemspot.netlify.com" target="_blank">IZEMSPOT</a>.
+The page will reload if you make edits.
