@@ -1019,26 +1019,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\seema\\.nuget\\packages\\": {}
+    "C:\\Users\\masterzen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\LeaveManagment\\LeaveManagment.csproj",
+      "projectUniqueName": "C:\\Users\\masterzen\\Desktop\\simran project\\LeaveManagment\\LeaveManagment.csproj",
       "projectName": "LeaveManagment",
-      "projectPath": "C:\\Projects\\LeaveManagment\\LeaveManagment.csproj",
-      "packagesPath": "C:\\Users\\seema\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\LeaveManagment\\obj\\",
+      "projectPath": "C:\\Users\\masterzen\\Desktop\\simran project\\LeaveManagment\\LeaveManagment.csproj",
+      "packagesPath": "C:\\Users\\masterzen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\masterzen\\Desktop\\simran project\\LeaveManagment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\seema\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\masterzen\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1092,7 +1090,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -73,3 +73,47 @@ C:\Projects\LeaveManagment\obj\Debug\net5.0\refint\LeaveManagment.dll
 C:\Projects\LeaveManagment\obj\Debug\net5.0\LeaveManagment.pdb
 C:\Projects\LeaveManagment\obj\Debug\net5.0\LeaveManagment.genruntimeconfig.cache
 C:\Projects\LeaveManagment\obj\Debug\net5.0\ref\LeaveManagment.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\appsettings.json
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\ClientApp\package.json
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\ClientApp\public\manifest.json
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\ClientApp\tsconfig.json
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\LeaveManagment.exe
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\LeaveManagment.deps.json
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\LeaveManagment.runtimeconfig.json
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\LeaveManagment.runtimeconfig.dev.json
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\LeaveManagment.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\ref\LeaveManagment.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\LeaveManagment.pdb
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Npgsql.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\LeaveManagment.csproj.AssemblyReference.cache
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\LeaveManagment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\LeaveManagment.AssemblyInfoInputs.cache
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\LeaveManagment.AssemblyInfo.cs
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\LeaveManagment.csproj.CoreCompileInputs.cache
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\LeaveManagment.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\LeaveManagment.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\staticwebassets\LeaveManagment.StaticWebAssets.Manifest.cache
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\staticwebassets\LeaveManagment.StaticWebAssets.xml
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\scopedcss\bundle\LeaveManagment.styles.css
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\LeaveManagment.RazorTargetAssemblyInfo.cache
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\LeaveManagment.csproj.CopyComplete
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\LeaveManagment.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\ref\LeaveManagment.dll
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\LeaveManagment.pdb
+C:\Users\masterzen\Desktop\simran project\LeaveManagment\obj\Debug\net5.0\LeaveManagment.genruntimeconfig.cache
