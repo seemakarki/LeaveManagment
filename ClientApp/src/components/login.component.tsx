@@ -4,6 +4,8 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import AuthService from "../services/auth.service";
+import axios from "axios";
+import { setFlagsFromString } from "v8";
 
 interface RouterProps {
   history: string;
@@ -38,34 +40,48 @@ export default class Login extends Component<Props, State> {
     });
   }
 
-  handleLogin(formValue: { username: string; password: string }) {
+  async handleLogin(formValue: { username: string; password: string }) {
     const { username, password } = formValue;
+
+
+    // console.log("username is ", username);
+    // console.log("password is ", password);
+
 
     this.setState({
       message: "",
       loading: true
     });
 
+    const loginPost = await axios.post("url", {   //actual url of  login post
+      username: username,
+      password: password
+    })
 
-    AuthService.login(username, password).then(
-      () => {
-        this.props.history.push("/profile");
-        window.location.reload();
-      },
-      error => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
+    if (loginPost) {
+      window.location.href = ""    // to dash board page
+    }
 
-        this.setState({
-          loading: false,
-          message: resMessage
-        });
-      }
-    );
+
+    // AuthService.login(username, password).then(
+    //   () => {
+    //     this.props.history.push("/profile");
+    //     window.location.reload();
+    //   },
+    //   error => {
+    //     const resMessage =
+    //       (error.response &&
+    //         error.response.data &&
+    //         error.response.data.message) ||
+    //       error.message ||
+    //       error.toString();
+
+    //     this.setState({
+    //       loading: false,
+    //       message: resMessage
+    //     });
+    //   }
+    // );
   }
 
   render() {
