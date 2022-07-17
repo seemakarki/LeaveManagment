@@ -14,7 +14,9 @@ import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
 
+
 import EventBus from "./common/EventBus";
+import DashBoard from "./components/dashBoard";
 
 type Props = {};
 
@@ -109,18 +111,16 @@ class App extends Component<Props, State> {
             </div>
           )}
         </nav>
-
-        <div className="container mt-3">
-          <Switch>
-            <Route exact path={["/", "/home"]} component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/profile" component={Profile} />
-            <Route path="/user" component={BoardUser} />
-            <Route path="/mod" component={BoardModerator} />
-            <Route path="/admin" component={BoardAdmin} />
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path={["/", "/login"]} component={Login} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/dashboard" component={DashBoard} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/profile" component={Profile} />
+          <Route path="/user" component={BoardUser} />
+          <Route path="/mod" component={BoardModerator} />
+          <Route path="/admin" component={BoardAdmin} />
+        </Switch>
 
         { /*<AuthVerify logOut={this.logOut}/> */}
       </div>
