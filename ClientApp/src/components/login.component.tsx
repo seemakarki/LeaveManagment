@@ -1,11 +1,11 @@
 import { Component } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import AuthService from "../services/auth.service";
+// import AuthService from "../services/auth.service";
 import axios from "axios";
-import { setFlagsFromString } from "v8";
+// import { setFlagsFromString } from "v8";
 
 interface RouterProps {
   history: string;
@@ -14,10 +14,10 @@ interface RouterProps {
 type Props = RouteComponentProps<RouterProps>;
 
 type State = {
-  username: string,
-  password: string,
-  loading: boolean,
-  message: string
+  username: string;
+  password: string;
+  loading: boolean;
+  message: string;
 };
 
 export default class Login extends Component<Props, State> {
@@ -29,7 +29,7 @@ export default class Login extends Component<Props, State> {
       username: "",
       password: "",
       loading: false,
-      message: ""
+      message: "",
     };
   }
 
@@ -43,25 +43,23 @@ export default class Login extends Component<Props, State> {
   async handleLogin(formValue: { username: string; password: string }) {
     const { username, password } = formValue;
 
-
     // console.log("username is ", username);
     // console.log("password is ", password);
 
-
     this.setState({
       message: "",
-      loading: true
+      loading: true,
     });
 
-    const loginPost = await axios.post("url", {   //actual url of  login post
+    const loginPost = await axios.post("url", {
+      //actual url of  login post
       username: username,
-      password: password
-    })
+      password: password,
+    });
 
     if (loginPost) {
-      window.location.href = ""    // to dash board page
+      window.location.href = ""; // to dash board page
     }
-
 
     // AuthService.login(username, password).then(
     //   () => {
@@ -94,7 +92,7 @@ export default class Login extends Component<Props, State> {
 
     return (
       <div className="col-md-12">
-        <div className="card card-container">
+        <div className="card card-container background-form">
           <img
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             alt="profile-img"
@@ -108,7 +106,9 @@ export default class Login extends Component<Props, State> {
           >
             <Form>
               <div className="form-group">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username" className="text-white">
+                  Username
+                </label>
                 <Field name="username" type="text" className="form-control" />
                 <ErrorMessage
                   name="username"
@@ -118,8 +118,14 @@ export default class Login extends Component<Props, State> {
               </div>
 
               <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <Field name="password" type="password" className="form-control" />
+                <label htmlFor="password" className="text-white">
+                  Password
+                </label>
+                <Field
+                  name="password"
+                  type="password"
+                  className="form-control"
+                />
                 <ErrorMessage
                   name="password"
                   component="div"
@@ -128,14 +134,17 @@ export default class Login extends Component<Props, State> {
               </div>
 
               <div className="form-group">
-                <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block"
+                  disabled={loading}
+                >
                   {loading && (
                     <span className="spinner-border spinner-border-sm"></span>
                   )}
                   <span>Login</span>
                 </button>
               </div>
-
               {message && (
                 <div className="form-group">
                   <div className="alert alert-danger" role="alert">
@@ -143,6 +152,11 @@ export default class Login extends Component<Props, State> {
                   </div>
                 </div>
               )}
+              <div>
+                <Link to="/register">
+                  <button className="btn btn-success w-100">Register</button>
+                </Link>
+              </div>
             </Form>
           </Formik>
         </div>

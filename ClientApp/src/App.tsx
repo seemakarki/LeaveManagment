@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import AuthService from "./services/auth.service";
-import IUser from './types/user.type';
+import IUser from "./types/user.type";
 
 import Login from "./components/login.component";
 import Register from "./components/register.component";
@@ -14,17 +14,17 @@ import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
 
-
 import EventBus from "./common/EventBus";
 import DashBoard from "./components/dashBoard";
+import Employee from "./InputForms/Employee";
 
 type Props = {};
 
 type State = {
-  showModeratorBoard: boolean,
-  showAdminBoard: boolean,
-  currentUser: IUser | undefined
-}
+  showModeratorBoard: boolean;
+  showAdminBoard: boolean;
+  currentUser: IUser | undefined;
+};
 
 class App extends Component<Props, State> {
   constructor(props: Props) {
@@ -70,9 +70,27 @@ class App extends Component<Props, State> {
 
     return (
       <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <div className="navbar-nav mr-auto">
+        {currentUser && (
+          <nav className="navbar navbar-expand navbar-dark bg-dark">
+            <div className="navbar-nav mr-auto">
+              <div className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Link to={"/profile"} className="nav-link">
+                    {currentUser.username}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a href="/login" className="nav-link" onClick={this.logOut}>
+                    LogOut
+                  </a>
+                </li>
+              </div>
+            </div>
+          </nav>
+        )}
 
+        {/* <nav className="navbar navbar-expand navbar-dark bg-dark">
+          <div className="navbar-nav mr-auto">
             {currentUser && (
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
@@ -110,7 +128,7 @@ class App extends Component<Props, State> {
               </li>
             </div>
           )}
-        </nav>
+        </nav> */}
         <Switch>
           <Route exact path={["/", "/login"]} component={Login} />
           <Route exact path="/login" component={Login} />
@@ -120,9 +138,10 @@ class App extends Component<Props, State> {
           <Route path="/user" component={BoardUser} />
           <Route path="/mod" component={BoardModerator} />
           <Route path="/admin" component={BoardAdmin} />
+          <Route path="/employee" component={Employee} />
         </Switch>
 
-        { /*<AuthVerify logOut={this.logOut}/> */}
+        {/*<AuthVerify logOut={this.logOut}/> */}
       </div>
     );
   }
