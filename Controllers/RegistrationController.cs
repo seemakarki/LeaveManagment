@@ -14,32 +14,37 @@ namespace LeaveManagment.Controllers
     public class RegistrationController : ControllerBase
     {
         private readonly LeaveContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-        public RegistrationController(LeaveContext context,UserManager<IdentityUser> userManager,
-                              SignInManager<IdentityUser> signInManager)
+       
+        public RegistrationController(LeaveContext context)
         {
             _context = context;
-            _userManager = userManager;
-            _signInManager = signInManager;
+        
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(RegistrationModel model)
+        public async Task<IActionResult> Post(RegistrationModel model)
         {
             if (model == null)
                 return Ok(false);
-            _context.Add(new Registration
+            if (ModelState.IsValid)
             {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                UserName = model.UserName,
-                Password = model.Password,
-                CreatedOn = DateTime.Now
-            });
-            await _context.SaveChangesAsync();
-            return Ok(true);
+                    _context.registrations.Add(new Registration
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        UserName = model.UserName,
+                        Password = PasswordHelper.CreateHash(model.Password, model.UserName),
+                        CreatedOn = DateTime.Now,
+                        DepartmentId=model.DepartmentId
+                    });
+                    await _context.SaveChangesAsync();
+                
+                return Ok(true);
+            }
+            return Ok(false);
 
         }
     }
+
 }
+

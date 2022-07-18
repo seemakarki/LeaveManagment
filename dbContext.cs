@@ -2,19 +2,20 @@
 using LeaveManagment.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace LeaveManagment
 {
-    public class LeaveContext : IdentityDbContext<Registration>
+    public class LeaveContext : DbContext
 
     {
-        public LeaveContext(DbContextOptions<LeaveContext> options)
-            : base(options)
+        private readonly DbContextOptions _options;
+
+        public LeaveContext(DbContextOptions options) : base(options)
         {
+            _options = options;
         }
-
         public DbSet<Login> login { get; set; }
-
         public DbSet<Employee> employee { get; set; }
         public DbSet<Salary> salary { get; set; }
         public DbSet<Department> department { get; set; }
@@ -23,23 +24,22 @@ namespace LeaveManagment
 
 
         protected override void OnModelCreating(ModelBuilder builder)
-            {
+        {
+            base.OnModelCreating(builder);
+            
             builder.Entity<Employee>(entity =>
             {
                 entity.ToTable("employee", "leave");
-
 
             });
             builder.Entity<Salary>(entity =>
             {
                 entity.ToTable("salary", "leave");
 
-
             });
             builder.Entity<Department>(entity =>
             {
                 entity.ToTable("department", "leave");
-
 
             });
             builder.Entity<Leave>(entity =>
@@ -51,13 +51,10 @@ namespace LeaveManagment
             {
                 entity.ToTable("registration", "leave");
 
-
             });
             builder.Entity<Login>(entity =>
             {
                 entity.ToTable("login", "leave");
-
-
             });
         }
 

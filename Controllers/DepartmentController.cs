@@ -29,6 +29,7 @@ namespace LeaveManagment.Controllers
                 var data = _context.department.FirstOrDefault(x => x.Id == model.Id);
                 _context.Update(model);
             }
+            await _context.SaveChangesAsync();
             return model.Id;
         }
 

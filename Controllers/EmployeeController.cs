@@ -31,6 +31,8 @@ namespace LeaveManagment.Controllers
                 model.CreatedOn = data.CreatedOn;
                 _context.Update(model);
             }
+            await _context.SaveChangesAsync();
+
             return model.Id;
         }
 

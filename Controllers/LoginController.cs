@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LeaveManagment.Models;
 using LeaveManagment.Entity;
-
+using Microsoft.AspNetCore.Identity;
 namespace LeaveManagment.Controllers
 {
     [ApiController]
@@ -13,40 +13,32 @@ namespace LeaveManagment.Controllers
     public class LoginController : ControllerBase
     {
         private readonly LeaveContext _context;
-      
+       
         public LoginController(LeaveContext context)
         {
             _context = context;
-
+           
         }
         [HttpPost]
-        public  async Task<IActionResult> Post(LoginModel model)
+        public async Task<ActionResult<string>> Post(LoginModel model)
         {
-            var name =  _context.registrations.FirstOrDefault(x => x.UserName == model.UserName);
-            if(name!=null)
+            if (ModelState.IsValid)
             {
-                if (name.Password == model.PassWord)
-                {
-                    var data = _context.Add(new Login
-                    {
-                        UserName = name.UserName,
-                        Password = model.PassWord
-                    });
-                    _context.Add(data);
-                }
-                else
-                {
-                    return Ok("PassWord incorrect");
-                }
-               
-               await _context.SaveChangesAsync();
-            }
-            else
-            {
-                return Ok(false);
-            }
-            return Ok(true);
-        }
+                var user = _context.registrations.FirstOrDefault(x => x.UserName == model.UserName.ToLower());
+                if (user == null)
+                    return null;
+                if (!PasswordHelper.Validate(model.UserName.ToLower(), model.PassWord, user.Password))
+                    return "Password error";
 
+                var data = new Login
+                {
+                    UserName = model.UserName,
+                    Password = model.PassWord
+                };
+                _context.login.Add(data);
+                await _context.SaveChangesAsync();
+            }
+            return Ok(model.UserName);
+        }
     }
 }

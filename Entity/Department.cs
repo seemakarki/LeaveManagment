@@ -9,6 +9,5 @@ namespace LeaveManagment.Entity
     {
         public int Id { get; set; }
         public string DepartmentName { get; set; }
-        public string Designation { get; set; }
     }
 }

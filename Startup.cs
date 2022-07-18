@@ -35,14 +35,10 @@ namespace LeaveManagment
         {
 
             services.AddControllers();
-
-
             var connectionString = Configuration["DbContextSettings:ConnectionString"];
             services.AddDbContext<LeaveContext>(
                 opts => opts.UseNpgsql(connectionString)
             );
-          services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<LeaveContext>();
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LeaveManagment", Version = "v1" });
@@ -60,10 +56,10 @@ namespace LeaveManagment
             }
 
             context.Database.EnsureCreated();
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

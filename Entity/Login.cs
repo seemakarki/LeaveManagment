@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace LeaveManagment.Entity
 {
     public class Login 
-
     {
         public int Id { get; set; }
         public string UserName { get; set; }
