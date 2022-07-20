@@ -25,7 +25,7 @@ type Props = {};
 type State = {
   showModeratorBoard: boolean;
   showAdminBoard: boolean;
-  currentUser: IUser | undefined;
+  currentUser?: string | undefined;
 };
 
 class App extends Component<Props, State> {
@@ -36,7 +36,7 @@ class App extends Component<Props, State> {
     this.state = {
       showModeratorBoard: false,
       showAdminBoard: false,
-      currentUser: undefined,
+        currentUser: localStorage.getItem("curUser")|| '',
     };
   }
 
@@ -72,13 +72,12 @@ class App extends Component<Props, State> {
 
     return (
       <div>
-        {currentUser && (
+        {currentUser  != '' && (
           <nav className="navbar navbar-expand navbar-dark bg-dark">
             <div className="navbar-nav mr-auto">
               <div className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <Link to={"/profile"} className="nav-link">
-                    {currentUser.username}
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -132,8 +131,9 @@ class App extends Component<Props, State> {
           )}
         </nav> */}
         {/* appp */}
-        <div>
-          <SidebarMenu />
+            <div>
+                {currentUser != '' ? <SidebarMenu />: null}
+          
           <div style={{ marginLeft: "256px" }}>
             <Switch>
               <Route exact path={["/", "/login"]} component={Login} />

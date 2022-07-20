@@ -51,15 +51,16 @@ export default class Login extends Component<Props, State> {
       loading: true,
     });
 
-    const loginPost = await axios.post("url", {
-      //actual url of  login post
-      username: username,
-      password: password,
-    });
+    //const loginPost = await axios.post("url", {
+    //  //actual url of  login post
+    //  username: username,
+    //  password: password,
+    //});
 
-    if (loginPost) {
-      window.location.href = ""; // to dash board page
-    }
+      //if (loginPost) {
+          localStorage.setItem("curUser", "hello");
+          window.location.href = "/dashboard"; // to dash board page
+    //}
 
     // AuthService.login(username, password).then(
     //   () => {
