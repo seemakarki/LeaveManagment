@@ -1,20 +1,41 @@
-import { DownloadOutlined, PlusOutlined } from "@ant-design/icons";
+import { DeleteOutlined, DownloadOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Space } from "antd";
 import Search from "antd/lib/input/Search";
 import Table, { ColumnsType } from "antd/lib/table";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+interface DataType {
+  key: number;
+  name: string;
+  address: string;
+  dateofbirth: string;
+  contact: string;
+  position: string;
+}
 
 const EmployeeTable = () => {
-  interface DataType {
-    key: number;
-    name: string;
-    address: string;
-    dateofbirth: string;
-    contact: string;
-    position: string;
+
+
+  const getData = async () => {
+    const res: any = await axios.get<any[]>("/employee")
+
+    if (res) {
+      console.log("got response");
+
+      res.forEach((element: any) => {
+        data.push(element)
+      });
+
+    }
+
   }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
 
   const columns: ColumnsType<DataType> = [
     {
@@ -53,23 +74,12 @@ const EmployeeTable = () => {
       title: "Action",
       key: "action",
       render: (_, record) => (
-        <Space size="large">
-          <a>Edit</a>
-          <a>Delete</a>
-        </Space>
+        <div style={{ cursor: 'pointer' }} ><DeleteOutlined /></div>
       ),
     },
   ];
-  const data: DataType[] = [
-    {
-      key: 1,
-      name: "Dadip Bhattarai",
-      address: "Rawabeshi-3, Khotang",
-      dateofbirth: "1998-11-26",
-      contact: "9860832019",
-      position: "Front End Developer",
-    },
-  ];
+
+  const data: any[] = [];
   const onSearch = (value: string) => console.log(value);
 
   return (
