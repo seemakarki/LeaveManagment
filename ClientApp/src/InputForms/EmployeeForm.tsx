@@ -1,6 +1,8 @@
 import React from "react";
 import { Button, Col, DatePicker, Form, Input, Row, Select } from "antd";
 import styled from "styled-components";
+import axios from "axios";
+import { SliderValueLabelUnstyled } from "@mui/base";
 
 const { Option } = Select;
 
@@ -15,8 +17,27 @@ const validateMessages = {
   },
 };
 
-const onFinish = (values: any) => {
-  console.log(values);
+
+const onFinish = async (values: any) => {
+
+  const res = await axios.post<any>("/employee", {
+    id: 1,
+    departmentId: values.department,
+    firstName: values.name,
+    middleName: "",
+    lastName: "",
+    gender: values.gender,
+    address: values.address,
+    dob: values.dob,
+    phoneNo: values.contact,
+    email: "",
+    designation: values.position,
+    createdOn: new Date()
+  });
+
+  if (res) {
+    console.log("succes");
+  }
 };
 
 const config = {
@@ -37,7 +58,7 @@ const EmployeeForm = () => {
         <Row gutter={[16, 16]}>
           <Col span={8}>
             <Form.Item
-              name={["user", "name"]}
+              name={"name"}
               label="Name"
               rules={[{ required: true }]}
             >
@@ -46,7 +67,7 @@ const EmployeeForm = () => {
           </Col>
           <Col span={8}>
             <Form.Item
-              name={["user", "address"]}
+              name={"address"}
               label="Address"
               rules={[{ required: true }]}
             >
@@ -54,7 +75,7 @@ const EmployeeForm = () => {
             </Form.Item>
           </Col>
           <Col span={8}>
-            <Form.Item name="date-picker" label="Date of Birth" {...config}>
+            <Form.Item name="dob" label="Date of Birth" {...config}>
               <DatePicker style={{ width: "100%" }} />
             </Form.Item>
           </Col>
@@ -62,7 +83,7 @@ const EmployeeForm = () => {
         <Row gutter={[16, 16]}>
           <Col span={6}>
             <Form.Item
-              name={["user", "contact"]}
+              name={"contact"}
               label="Contact"
               rules={[{ required: true }]}
             >
@@ -71,7 +92,7 @@ const EmployeeForm = () => {
           </Col>
           <Col span={6}>
             <Form.Item
-              name={["user", "position"]}
+              name={"position"}
               label="Position"
               rules={[{ required: true }]}
             >

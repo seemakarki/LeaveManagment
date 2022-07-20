@@ -36,7 +36,7 @@ class App extends Component<Props, State> {
     this.state = {
       showModeratorBoard: false,
       showAdminBoard: false,
-        currentUser: localStorage.getItem("curUser")|| '',
+      currentUser: localStorage.getItem("curUser") || '',
     };
   }
 
@@ -72,78 +72,17 @@ class App extends Component<Props, State> {
 
     return (
       <div>
-        {currentUser  != '' && (
-          <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <div className="navbar-nav mr-auto">
-              <div className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link to={"/profile"} className="nav-link">
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <a href="/login" className="nav-link" onClick={this.logOut}>
-                    LogOut
-                  </a>
-                </li>
-              </div>
-            </div>
-          </nav>
-        )}
+        <div>
+          {currentUser != '' ? <SidebarMenu /> : null}
 
-        {/* <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <div className="navbar-nav mr-auto">
-            {currentUser && (
-              <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  User
-                </Link>
-              </li>
-            )}
-          </div>
-
-          {currentUser ? (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/profile"} className="nav-link">
-                  {currentUser.username}
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogOut
-                </a>
-              </li>
-            </div>
-          ) : (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/login"} className="nav-link">
-                  Login
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
-                  Sign Up
-                </Link>
-              </li>
-            </div>
-          )}
-        </nav> */}
-        {/* appp */}
-            <div>
-                {currentUser != '' ? <SidebarMenu />: null}
-          
           <div style={{ marginLeft: "256px" }}>
             <Switch>
-              <Route exact path={["/", "/login"]} component={Login} />
+              <Route exact path={"/"} component={Login} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/dashboard" component={DashBoard} />
-              <Route exact path="/profile" component={Profile} />
-              <Route path="/user" component={BoardUser} />
-              <Route path="/mod" component={BoardModerator} />
-              <Route path="/admin" component={BoardAdmin} />
+
+
               <Route exact path="/employee" component={Employee} />
               <Route path="/employee/add" component={EmployeeForm} />
               <Route exact path="/leave" component={LeaveEmp} />

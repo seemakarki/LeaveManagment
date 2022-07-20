@@ -1,6 +1,7 @@
 import {
   ApartmentOutlined,
   DollarCircleOutlined,
+  LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   UserDeleteOutlined,
@@ -32,6 +33,11 @@ const items = [
     icon: <DollarCircleOutlined style={{ fontSize: "1.2rem" }} />,
     label: "Salary",
   },
+  {
+    key: "5",
+    icon: <LogoutOutlined style={{ fontSize: "1.2rem" }} />,
+    label: "Logout",
+  },
 ];
 
 const SidebarMenu = () => {
@@ -56,6 +62,10 @@ const SidebarMenu = () => {
     }
     if (menuModel?.key === "4") {
       history.push("/salary");
+    }
+    if (menuModel?.key === "5") {
+      localStorage.clear();
+      window.location.href = "/"
     }
   };
 
