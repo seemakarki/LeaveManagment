@@ -1,12 +1,11 @@
 import React from "react";
 import App from "../components/dashBoard";
-import EmployeeForm from "./EmployeeForm";
+import EmployeeTable from "./EmployeeTable";
 
 const Employee = () => {
   return (
-    <div style={{ width: "100%", display: "inline-flex" }}>
-      <App />
-      <EmployeeForm />
+    <div>
+      <EmployeeTable />
     </div>
   );
 };

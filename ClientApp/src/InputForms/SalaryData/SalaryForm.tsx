@@ -1,5 +1,6 @@
-import React from "react";
 import { Button, Col, DatePicker, Form, Input, Row, Select } from "antd";
+import TextArea from "antd/lib/input/TextArea";
+import React from "react";
 import styled from "styled-components";
 
 const { Option } = Select;
@@ -25,7 +26,7 @@ const config = {
   ],
 };
 
-const EmployeeForm = () => {
+const SalaryForm = () => {
   return (
     <StyleEmployeeForm>
       <Form
@@ -34,82 +35,61 @@ const EmployeeForm = () => {
         onFinish={onFinish}
         validateMessages={validateMessages}
       >
-        <Row gutter={[16, 16]}>
-          <Col span={8}>
+        <Row gutter={[30, 30]}>
+          <Col span={12}>
             <Form.Item
               name={["user", "name"]}
-              label="Name"
+              label="Employee Name"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col span={12}>
             <Form.Item
-              name={["user", "address"]}
-              label="Address"
+              name={["user", "account"]}
+              label="Bank Account"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
           </Col>
-          <Col span={8}>
-            <Form.Item name="date-picker" label="Date of Birth" {...config}>
-              <DatePicker style={{ width: "100%" }} />
+          {/* <Col span={8}>
+            <Form.Item
+              name={["user", "days"]}
+              label="Days"
+              rules={[{ required: true }]}
+            >
+              <Input />
             </Form.Item>
-          </Col>
+          </Col> */}
         </Row>
-        <Row gutter={[16, 16]}>
-          <Col span={6}>
+        <Row gutter={[20, 20]}>
+          <Col span={8}>
             <Form.Item
-              name={["user", "contact"]}
-              label="Contact"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item
-              name={["user", "position"]}
-              label="Position"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item
-              name="gender"
-              label="Gender"
+              name="leavetype"
+              label="Leave Type"
               rules={[{ required: true }]}
             >
               <Select
-                placeholder="Select Gender"
-                // onChange={this.onGenderChange}
+                placeholder="Select Type"
+                // onChange={onGenderChange}
                 allowClear
               >
-                <Option value="male">Male</Option>
-                <Option value="female">Female</Option>
-                <Option value="other">Other</Option>
+                <Option value="half">Half Day</Option>
+                <Option value="full">Full Day</Option>
+                <Option value="other">other</Option>
               </Select>
             </Form.Item>
           </Col>
-          <Col span={6}>
-            <Form.Item
-              name="department"
-              label="Department"
-              rules={[{ required: true }]}
-            >
-              <Select
-                placeholder="Select Depart"
-                // onChange={this.onDepartChange}
-                allowClear
-              >
-                <Option value="depart1">Depart1</Option>
-                <Option value="depart2">Depart2</Option>
-                <Option value="depart3">Depart3</Option>
-              </Select>
+          <Col span={8}>
+            <Form.Item name="month" label="Month" {...config}>
+              <DatePicker picker="month" style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item name="Year" label="Year" {...config}>
+              <DatePicker picker="year" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -123,7 +103,7 @@ const EmployeeForm = () => {
   );
 };
 
-export default EmployeeForm;
+export default SalaryForm;
 
 const StyleEmployeeForm = styled.div`
   width: 80%;

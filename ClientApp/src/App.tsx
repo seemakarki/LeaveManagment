@@ -2,21 +2,23 @@ import { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
 import AuthService from "./services/auth.service";
 import IUser from "./types/user.type";
-
 import Login from "./components/login.component";
 import Register from "./components/register.component";
-import Home from "./components/home.component";
 import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
-
 import EventBus from "./common/EventBus";
 import DashBoard from "./components/dashBoard";
 import Employee from "./InputForms/Employee";
+import LeaveEmp from "./InputForms/LeaveData/LeaveEmp";
+import SidebarMenu from "./components/SidebarMenu";
+import EmployeeForm from "./InputForms/EmployeeForm";
+import SalaryForm from "./InputForms/SalaryData/SalaryForm";
+import LeaveForm from "./InputForms/LeaveData/LeaveForm";
+import SalaryTable from "./InputForms/SalaryData/SalaryTable";
 
 type Props = {};
 
@@ -129,18 +131,28 @@ class App extends Component<Props, State> {
             </div>
           )}
         </nav> */}
-        <Switch>
-          <Route exact path={["/", "/login"]} component={Login} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/dashboard" component={DashBoard} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/profile" component={Profile} />
-          <Route path="/user" component={BoardUser} />
-          <Route path="/mod" component={BoardModerator} />
-          <Route path="/admin" component={BoardAdmin} />
-          <Route path="/employee" component={Employee} />
-        </Switch>
-
+        {/* appp */}
+        <div>
+          <SidebarMenu />
+          <div style={{ marginLeft: "256px" }}>
+            <Switch>
+              <Route exact path={["/", "/login"]} component={Login} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/dashboard" component={DashBoard} />
+              <Route exact path="/profile" component={Profile} />
+              <Route path="/user" component={BoardUser} />
+              <Route path="/mod" component={BoardModerator} />
+              <Route path="/admin" component={BoardAdmin} />
+              <Route exact path="/employee" component={Employee} />
+              <Route path="/employee/add" component={EmployeeForm} />
+              <Route exact path="/leave" component={LeaveEmp} />
+              <Route path="/leave/add" component={LeaveForm} />
+              <Route exact path="/salary" component={SalaryTable} />
+              <Route path="/salary/add" component={SalaryForm} />
+            </Switch>
+          </div>
+        </div>
         {/*<AuthVerify logOut={this.logOut}/> */}
       </div>
     );

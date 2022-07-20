@@ -1,5 +1,6 @@
-import React from "react";
 import { Button, Col, DatePicker, Form, Input, Row, Select } from "antd";
+import TextArea from "antd/lib/input/TextArea";
+import React from "react";
 import styled from "styled-components";
 
 const { Option } = Select;
@@ -25,7 +26,7 @@ const config = {
   ],
 };
 
-const EmployeeForm = () => {
+const LeaveForm = () => {
   return (
     <StyleEmployeeForm>
       <Form
@@ -34,11 +35,35 @@ const EmployeeForm = () => {
         onFinish={onFinish}
         validateMessages={validateMessages}
       >
-        <Row gutter={[16, 16]}>
+        <Row gutter={[30, 30]}>
           <Col span={8}>
             <Form.Item
-              name={["user", "name"]}
-              label="Name"
+              name="leavetype"
+              label="Leave Type"
+              rules={[{ required: true }]}
+            >
+              <Select
+                placeholder="Select Type"
+                // onChange={onGenderChange}
+                allowClear
+              >
+                <Option value="half">Half Day</Option>
+                <Option value="full">Full Day</Option>
+                <Option value="other">other</Option>
+              </Select>
+            </Form.Item>
+            {/* <Form.Item
+              name={["user", "Type"]}
+              label="Leave Type"
+              rules={[{ required: true }]}
+            >
+              <Input />
+            </Form.Item> */}
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              name={["user", "status"]}
+              label="Leave Status"
               rules={[{ required: true }]}
             >
               <Input />
@@ -46,70 +71,39 @@ const EmployeeForm = () => {
           </Col>
           <Col span={8}>
             <Form.Item
-              name={["user", "address"]}
-              label="Address"
+              name={["user", "days"]}
+              label="Days"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
           </Col>
-          <Col span={8}>
-            <Form.Item name="date-picker" label="Date of Birth" {...config}>
+        </Row>
+        <Row gutter={[80, 80]}>
+          <Col span={12}>
+            <Form.Item name="fromDate" label="From Date" {...config}>
+              <DatePicker style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item name="toDate" label="To Date" {...config}>
               <DatePicker style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={[16, 16]}>
-          <Col span={6}>
+        <Row>
+          <Col span={12}>
             <Form.Item
-              name={["user", "contact"]}
-              label="Contact"
+              name={["user", "reason"]}
+              label="Reason"
               rules={[{ required: true }]}
             >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item
-              name={["user", "position"]}
-              label="Position"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item
-              name="gender"
-              label="Gender"
-              rules={[{ required: true }]}
-            >
-              <Select
-                placeholder="Select Gender"
-                // onChange={this.onGenderChange}
-                allowClear
-              >
-                <Option value="male">Male</Option>
-                <Option value="female">Female</Option>
-                <Option value="other">Other</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item
-              name="department"
-              label="Department"
-              rules={[{ required: true }]}
-            >
-              <Select
-                placeholder="Select Depart"
-                // onChange={this.onDepartChange}
-                allowClear
-              >
-                <Option value="depart1">Depart1</Option>
-                <Option value="depart2">Depart2</Option>
-                <Option value="depart3">Depart3</Option>
-              </Select>
+              <TextArea
+                rows={4}
+                placeholder="Enter your Reasons"
+                style={{ resize: "none" }}
+                maxLength={100}
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -123,7 +117,7 @@ const EmployeeForm = () => {
   );
 };
 
-export default EmployeeForm;
+export default LeaveForm;
 
 const StyleEmployeeForm = styled.div`
   width: 80%;

@@ -1,0 +1,8 @@
+{
+    "Smtp": {
+      "Host": "smtp.gmail.com",
+      "Port": 587,
+      "Username": "simrankattel13@gmail.com",
+      "Password": "Narmis@123"
+    }
+  }
