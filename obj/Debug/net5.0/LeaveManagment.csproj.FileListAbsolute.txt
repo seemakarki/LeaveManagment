@@ -165,4 +165,6 @@ C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dl
 C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Projects\LeaveManagment\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Projects\LeaveManagment\bin\Debug\net5.0\ref\LeaveManagment.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\ClientApp\build\manifest.json
+C:\Projects\LeaveManagment\bin\Debug\net5.0\ClientApp\build\asset-manifest.json
+C:\Projects\LeaveManagment\obj\Debug\net5.0\refint\LeaveManagment.dll
