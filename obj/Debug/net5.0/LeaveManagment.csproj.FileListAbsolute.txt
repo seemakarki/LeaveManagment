@@ -69,7 +69,6 @@ C:\Projects\LeaveManagment\obj\Debug\net5.0\staticwebassets\LeaveManagment.Stati
 C:\Projects\LeaveManagment\obj\Debug\net5.0\LeaveManagment.RazorTargetAssemblyInfo.cache
 C:\Projects\LeaveManagment\obj\Debug\net5.0\LeaveManagment.csproj.CopyComplete
 C:\Projects\LeaveManagment\obj\Debug\net5.0\LeaveManagment.dll
-C:\Projects\LeaveManagment\obj\Debug\net5.0\refint\LeaveManagment.dll
 C:\Projects\LeaveManagment\obj\Debug\net5.0\LeaveManagment.pdb
 C:\Projects\LeaveManagment\obj\Debug\net5.0\LeaveManagment.genruntimeconfig.cache
 C:\Projects\LeaveManagment\obj\Debug\net5.0\ref\LeaveManagment.dll
@@ -134,3 +133,36 @@ C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\Bouncy
 C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\System.Text.Encodings.Web.dll
 C:\Users\masterzen\Desktop\simran project\LeaveManagment\bin\Debug\net5.0\System.Text.Json.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\email.json
+C:\Projects\LeaveManagment\bin\Debug\net5.0\package-lock.json
+C:\Projects\LeaveManagment\bin\Debug\net5.0\ClientApp\public\manifest.json
+C:\Projects\LeaveManagment\bin\Debug\net5.0\ClientApp\tsconfig.json
+C:\Projects\LeaveManagment\bin\Debug\net5.0\LeaveManagment.StaticWebAssets.xml
+C:\Projects\LeaveManagment\bin\Debug\net5.0\MailKit.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.Configuration.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\MimeKit.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\System.Text.Encodings.Web.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\System.Text.Json.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Projects\LeaveManagment\bin\Debug\net5.0\ref\LeaveManagment.dll

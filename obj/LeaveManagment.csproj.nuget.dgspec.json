@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\masterzen\\Desktop\\simran project\\LeaveManagment\\LeaveManagment.csproj": {}
+    "C:\\Projects\\LeaveManagment\\LeaveManagment.csproj": {}
   },
   "projects": {
-    "C:\\Users\\masterzen\\Desktop\\simran project\\LeaveManagment\\LeaveManagment.csproj": {
+    "C:\\Projects\\LeaveManagment\\LeaveManagment.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\masterzen\\Desktop\\simran project\\LeaveManagment\\LeaveManagment.csproj",
+        "projectUniqueName": "C:\\Projects\\LeaveManagment\\LeaveManagment.csproj",
         "projectName": "LeaveManagment",
-        "projectPath": "C:\\Users\\masterzen\\Desktop\\simran project\\LeaveManagment\\LeaveManagment.csproj",
-        "packagesPath": "C:\\Users\\masterzen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\masterzen\\Desktop\\simran project\\LeaveManagment\\obj\\",
+        "projectPath": "C:\\Projects\\LeaveManagment\\LeaveManagment.csproj",
+        "packagesPath": "C:\\Users\\seema\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\LeaveManagment\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\masterzen\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\seema\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -42,6 +44,10 @@
               "target": "Package",
               "version": "[3.3.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.8, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.17, )"
@@ -61,6 +67,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.21.0, )"
             }
           },
           "imports": [
@@ -81,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

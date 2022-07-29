@@ -9,9 +9,11 @@ namespace LeaveManagment.Entity
 {
     public class Login 
     {
-        public int Id { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public long Id { get; set; }
+        public int UserId { get; set; }
+        public DateTime LoginTimestamp { get; set; }
+        public string Browser { get; set; }
+        public string IpAddress { get; set; }
 
     }
 }

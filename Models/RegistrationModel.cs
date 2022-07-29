@@ -12,5 +12,6 @@ namespace LeaveManagment.Models
         public string UserName { get; set; }
         public string Password { get; set; }
         public int DepartmentId { get; set; }
+        public bool IsDepHead { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 using LeaveManagment.Entity;
 using LeaveManagment.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +23,11 @@ namespace LeaveManagment.Controllers
         {
             if (model.Id == 0)
             {
-                _context.Add(model);
+               await _context.AddAsync(model);
             }
             else
             {
-                var data = _context.department.FirstOrDefault(x => x.Id == model.Id);
+                var data = await _context.department.FirstOrDefaultAsync(x => x.Id == model.Id);
                 _context.Update(model);
             }
             await _context.SaveChangesAsync();
@@ -36,8 +37,7 @@ namespace LeaveManagment.Controllers
         [HttpGet]
         public async Task<Department> GetDepartment(int id)
         {
-
-            var data = _context.department.FirstOrDefault(x => x.Id == id);
+            var data =await _context.department.FirstOrDefaultAsync(x => x.Id == id);
             return data;
         }
     }

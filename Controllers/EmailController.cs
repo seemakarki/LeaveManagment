@@ -5,50 +5,43 @@ using Microsoft.Extensions.Options;
 using MailKit.Security;
 using System.IO;
 using MimeKit;
-using MailKit.Net.Smtp;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
+using System.Text;
+using System;
+
 namespace LeaveManagment.Controllers
 {
     [ApiController]
     [Route("email")]
     public class EmailController : ControllerBase
     {
-        private readonly MailSettings _mailSettings;
-        public EmailController(IOptions<MailSettings> mailSettings)
-        {
-            _mailSettings = mailSettings.Value;
-        }
+      
         [HttpPost]
         public async Task sendEmail(MailRequest request)
         {
-            var email = new MimeMessage();
-            email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-            email.To.Add(MailboxAddress.Parse(request.ToEmail));
-            email.Subject = request.Subject;
-            var builder = new BodyBuilder();
-            if (request.Attachments != null)
+            string from = "seema.carkeey@gmail.com"; //From address    
+            MailMessage message = new MailMessage(from, request.ToEmail);
+            message.Subject = request.Subject;
+            message.Body = request.Body;
+            message.BodyEncoding = Encoding.UTF8;
+            message.IsBodyHtml = true;
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp    
+            System.Net.NetworkCredential basicCredential1 = new
+            System.Net.NetworkCredential("seema.carkeey@gmail.com", "hkzqomfrrkvmxmuh");
+            client.EnableSsl = true;
+            client.UseDefaultCredentials = false;
+            client.Credentials = basicCredential1;
+            try
             {
-                byte[] fileBytes;
-                foreach (var file in request.Attachments)
-                {
-                    if (file.Length > 0)
-                    {
-                        using (var ms = new MemoryStream())
-                        {
-                            file.CopyTo(ms);
-                            fileBytes = ms.ToArray();
-                        }
-                        builder.Attachments.Add(file.FileName, fileBytes, ContentType.Parse(file.ContentType));
-                    }
-                }
+                client.Send(message);
             }
-            builder.HtmlBody = request.Body;
-            email.Body = builder.ToMessageBody();
-            using var smtp = new SmtpClient();
-            smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
-            smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
-            await smtp.SendAsync(email);
-            smtp.Disconnect(true);
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
     }

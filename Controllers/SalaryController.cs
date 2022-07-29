@@ -1,6 +1,7 @@
 using LeaveManagment.Entity;
 using LeaveManagment.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace LeaveManagment.Controllers
             }
             else
             {
-                var data = _context.salary.FirstOrDefault(x => x.Id == model.Id);
+                var data =await _context.salary.FirstOrDefaultAsync(x => x.Id == model.Id);
                 model.CreatedOn = data.CreatedOn;
                 _context.Update(model);
             }
@@ -38,7 +39,7 @@ namespace LeaveManagment.Controllers
         public async Task<Salary> GetSalary(int id)
         {
 
-            var data = _context.salary.FirstOrDefault(x => x.Id == id);
+            var data = await _context.salary.FirstOrDefaultAsync(x => x.Id == id);
             return data;
         }
     }

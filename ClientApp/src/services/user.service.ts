@@ -1,3 +1,4 @@
+import { message } from 'antd';
 import axios from 'axios';
 import authHeader from './auth-header';
 
@@ -19,6 +20,10 @@ class UserService {
   getAdminBoard() {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
   }
+}
+export const showSuccessMessage = (title?: string | React.ReactNode) => {
+  message.destroy();
+  message.success(title || "Task completed.")
 }
 
 export default new UserService();

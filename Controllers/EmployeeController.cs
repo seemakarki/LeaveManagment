@@ -39,8 +39,14 @@ namespace LeaveManagment.Controllers
         [HttpGet]
         public async Task<Employee> GetEmployee(int id)
         {
-
             var data = _context.employee.FirstOrDefault(x => x.Id == id);
+            return data;
+
+        }
+            [HttpGet("List")]
+        public async Task<List<Employee>> GetEmployeeList()
+        {
+            var data = _context.employee.ToList();
             return data;
         }
     }

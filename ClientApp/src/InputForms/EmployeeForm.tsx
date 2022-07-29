@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, DatePicker, Form, Input, Row, Select } from "antd";
 import styled from "styled-components";
 import axios from "axios";
-import { SliderValueLabelUnstyled } from "@mui/base";
+import { employee } from "./EmployeeTable";
+import { RouteComponentProps } from "react-router-dom";
+import { showSuccessMessage } from "../services/user.service";
+
 
 const { Option } = Select;
 
@@ -20,9 +23,8 @@ const validateMessages = {
 
 const onFinish = async (values: any) => {
 
-  const res = await axios.post<any>("/employee", {
-    id: 1,
-    departmentId: values.department,
+  const res = await axios.post<any>("http://localhost:5002/employee", {
+    departmentId: Number(values.department),
     firstName: values.name,
     middleName: "",
     lastName: "",
@@ -36,7 +38,8 @@ const onFinish = async (values: any) => {
   });
 
   if (res) {
-    console.log("succes");
+    showSuccessMessage("succes");
+    // history.push("/employee")
   }
 };
 
@@ -45,8 +48,22 @@ const config = {
     { type: "object" as const, required: true, message: "Please select time!" },
   ],
 };
+const EmployeeForm = (props: RouteComponentProps<{ id: string }>) => {
+  const [employee, setEmployee] = useState<employee>()
 
-const EmployeeForm = () => {
+  const getData = async () => {
+    if (Number(props.match.params.id)) {
+      const res = await axios.get<employee>("http://localhost:5002/employee")
+      if (res) {
+        setEmployee(res.data)
+      }
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <StyleEmployeeForm>
       <Form
@@ -127,9 +144,9 @@ const EmployeeForm = () => {
                 // onChange={this.onDepartChange}
                 allowClear
               >
-                <Option value="depart1">Depart1</Option>
-                <Option value="depart2">Depart2</Option>
-                <Option value="depart3">Depart3</Option>
+                <Option value="1">Depart1</Option>
+                <Option value="2">Depart2</Option>
+                <Option value="3">Depart3</Option>
               </Select>
             </Form.Item>
           </Col>
@@ -138,9 +155,12 @@ const EmployeeForm = () => {
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
+          <Button type="default" onClick={() => window.location.href = '/employee'} >
+            Cancel
+          </Button>
         </Form.Item>
       </Form>
-    </StyleEmployeeForm>
+    </StyleEmployeeForm >
   );
 };
 

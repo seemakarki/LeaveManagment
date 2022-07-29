@@ -15,6 +15,7 @@ namespace LeaveManagment.Entity
         public string LastName { get; set; }
         public string Password { get; set; }
         public int DepartmentId { get; set; }
+        public bool IsDepHead { get; set; }
         public DateTime CreatedOn { get; set; }
     }
 }

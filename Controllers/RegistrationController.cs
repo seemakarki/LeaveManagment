@@ -1,4 +1,5 @@
 ﻿using LeaveManagment.Entity;
+using LeaveManagment.IRepository;
 using LeaveManagment.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,11 +15,21 @@ namespace LeaveManagment.Controllers
     public class RegistrationController : ControllerBase
     {
         private readonly LeaveContext _context;
-       
-        public RegistrationController(LeaveContext context)
+        private readonly IRegistration _registration;
+        private readonly IUserMeta _meta;
+
+        public RegistrationController(LeaveContext context, IRegistration registration, IUserMeta meta)
         {
             _context = context;
+            _registration = registration;
+            _meta = meta;
         
+        }
+        [HttpGet("get/{userName}")]
+        public async Task<Registration> GetRegisters(string userName)
+        {
+            var data =await  _registration.getUser(userName);
+            return data;
         }
 
         [HttpPost]
@@ -28,21 +39,25 @@ namespace LeaveManagment.Controllers
                 return Ok(false);
             if (ModelState.IsValid)
             {
-                    _context.registrations.Add(new Registration
-                    {
-                        FirstName = model.FirstName,
-                        LastName = model.LastName,
-                        UserName = model.UserName,
-                        Password = PasswordHelper.CreateHash(model.Password, model.UserName),
-                        CreatedOn = DateTime.Now,
-                        DepartmentId=model.DepartmentId
-                    });
-                    await _context.SaveChangesAsync();
-                
+                await _registration.Post(model);
                 return Ok(true);
             }
             return Ok(false);
 
+        }
+        [HttpGet("get-meta")]
+        public async Task<ActionResult> GetUserMeta()
+        {
+            var dep = await _registration.GetDepHead();
+            var item = new 
+            {
+                LoginId = _meta.LoginId,
+                UserId = _meta.UserId,
+                UserName = _meta.UserName,
+                IsDepHead=dep.IsDepHead,
+                RoleId=_meta.RoleId
+            };
+            return Ok(item);
         }
     }
 
