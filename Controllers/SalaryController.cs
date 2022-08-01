@@ -46,7 +46,6 @@ namespace LeaveManagment.Controllers
             if (model.Id == 0)
             {
                 model.CreatedOn = DateTime.Now;
-                model.TotalBalance = model.TotalBalance;
                 _context.Add(model);
             }
             else
