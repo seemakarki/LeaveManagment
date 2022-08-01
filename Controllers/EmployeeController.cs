@@ -1,6 +1,9 @@
 ﻿using LeaveManagment.Entity;
+using LeaveManagment.IRepository;
 using LeaveManagment.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,46 +11,39 @@ using System.Threading.Tasks;
 
 namespace LeaveManagment.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("employee")]
     public class EmployeeController : ControllerBase
     {
         private readonly LeaveContext _context;
-        public EmployeeController(LeaveContext context)
+        private readonly IEmployee _repo;
+
+        public EmployeeController(LeaveContext context, IEmployee repo)
         {
             _context = context;
+            _repo = repo;
         }
         [HttpPost]
-        public async Task<ActionResult<int>> PostEmployee(Employee model)
+        public async Task<ActionResult> PostEmployee(Employee model)
         {
-            if (model.Id == 0)
-            {
-                model.CreatedOn = DateTime.Now;
-                _context.Add(model);
-            }
-            else
-            {
-                var data = _context.employee.FirstOrDefault(x => x.Id == model.Id);
-                model.CreatedOn = data.CreatedOn;
-                _context.Update(model);
-            }
-            await _context.SaveChangesAsync();
-
-            return model.Id;
+            if (model == null)
+                return Ok(false);
+        await _repo.Post(model);
+            return Ok(true);
         }
 
         [HttpGet]
-        public async Task<Employee> GetEmployee(int id)
+        public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
-            var data = _context.employee.FirstOrDefault(x => x.Id == id);
-            return data;
-
+            var data = await _repo.getEmployee(id);
+            return Ok(data);
         }
             [HttpGet("List")]
-        public async Task<List<Employee>> GetEmployeeList()
+        public async Task<ActionResult<List<Employee>>> GetEmployeeList()
         {
-            var data = _context.employee.ToList();
-            return data;
+            var data = await _repo.getList();
+            return Ok(data);
         }
     }
 }

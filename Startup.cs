@@ -12,8 +12,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.IdentityModel.Tokens.Jwt;
 using LeaveManagment.IRepository;
-using LeaveManagment.LeaveRepo;
 using System.Text;
+using LeaveManagment.LeaveRepo;
 
 namespace LeaveManagment
 {
@@ -39,7 +39,9 @@ namespace LeaveManagment
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IUserMeta, UserMeta>();
 
+            services.AddTransient<IEmployee, EmployeeRepo>();
             services.AddTransient<IRegistration, RegistrationRepo>();
+            services.AddTransient<ILeave, LeavesRepo>();
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             services
@@ -105,6 +107,7 @@ namespace LeaveManagment
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LeaveManagment v1"));
             }
             context.Database.EnsureCreated();
+            //context.Database.EnsureDeleted();
             app.UseStaticFiles();
             app.UseCors(x => x.SetIsOriginAllowed(origin => true).AllowAnyMethod().AllowAnyHeader().AllowCredentials());
             app.UseHttpsRedirection();

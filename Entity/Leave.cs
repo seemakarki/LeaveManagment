@@ -15,7 +15,6 @@ namespace LeaveManagment.Entity
         public DateTime ToDate { get; set; }
         public string Reference { get; set; }
         public DateTime CreatedOn { get; set; }
-        public Employee employees { get; set; }
     }
     public class LeaveModel
     {

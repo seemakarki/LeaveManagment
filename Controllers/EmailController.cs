@@ -10,9 +10,11 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Text;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LeaveManagment.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("email")]
     public class EmailController : ControllerBase

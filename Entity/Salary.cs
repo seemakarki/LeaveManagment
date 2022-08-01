@@ -9,9 +9,9 @@ namespace LeaveManagment.Entity
     { 
         public int Id { get; set; }
        public int EmployeeId { get; set; }
-         public string BankAccount { get; set; }
-        public int LeaveId { get; set; }
         public int Duration { get; set; }
+        public decimal SalaryAmt { get; set; }
+        public bool Status { get; set; }
         public DateTime CreatedOn { get; set; }
 
     }

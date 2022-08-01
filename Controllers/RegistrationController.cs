@@ -1,6 +1,7 @@
 ﻿using LeaveManagment.Entity;
 using LeaveManagment.IRepository;
 using LeaveManagment.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;

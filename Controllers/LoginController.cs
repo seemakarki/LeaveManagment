@@ -18,6 +18,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using LeaveManagment.Extension;
+using Microsoft.AspNetCore.Authorization;
+
 namespace LeaveManagment.Controllers
 {
     [ApiController]

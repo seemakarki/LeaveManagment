@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace LeaveManagment.LeaveRepo
 {
-    public class LeaveRepo:ILeave
+    public class LeavesRepo:ILeave
     {
         private readonly LeaveContext _context;
 
-        public LeaveRepo(LeaveContext context)
+        public LeavesRepo(LeaveContext context)
         {
             _context = context;
 
@@ -30,7 +30,8 @@ namespace LeaveManagment.LeaveRepo
                     FromDate = model.FromDate,
                     ToDate = model.ToDate,
                     Reference = model.Reference,
-                    CreatedOn = DateTime.Now
+                    CreatedOn = DateTime.Now,
+                    EmployeeId=model.EmployeeId
                 });
             }
             else
@@ -75,10 +76,24 @@ namespace LeaveManagment.LeaveRepo
                     Type = item.Type,
                     Status = item.Status,
                     Reference = item.Reference
-
                 });
             }
             return leaves;
+        }
+        public async Task<int> ToTalLeave(int employeeId,int month)
+        {
+           var data= await _context.leave
+                .Where(x => x.EmployeeId == employeeId&&x.FromDate.Month==month &&x.ToDate.Month==month).ToListAsync();
+            var days = 0;
+            foreach(var item in data)
+            {
+                var date=((item.FromDate-item.ToDate)*-1).Days;
+
+                days += date;
+
+            }
+            return days;
+                               
         }
     }
 }

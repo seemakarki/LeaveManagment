@@ -1,5 +1,6 @@
 using LeaveManagment.Entity;
 using LeaveManagment.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace LeaveManagment.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("department")]
     public class DepartmentController : ControllerBase
@@ -43,7 +45,7 @@ namespace LeaveManagment.Controllers
         [HttpGet("List")]
         public async Task<List<Department>> GetDepartment()
         {
-            var data = _context.department.ToList();
+            var data =await _context.department.ToListAsync();
             return data;
         }
     }

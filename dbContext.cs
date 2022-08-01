@@ -18,6 +18,8 @@ namespace LeaveManagment
         public DbSet<Login> login { get; set; }
         public DbSet<Employee> employee { get; set; }
         public DbSet<Salary> salary { get; set; }
+        public DbSet<SalaryDetails> salaryDetails { get; set; }
+
         public DbSet<Department> department { get; set; }
         public DbSet<Leave> leave { get; set; }
         public DbSet<Registration> registrations { get; set; }
@@ -37,6 +39,11 @@ namespace LeaveManagment
                 entity.ToTable("salary", "leave");
 
             });
+                 builder.Entity<SalaryDetails>(entity =>
+                 {
+                     entity.ToTable("salary_details", "leave");
+
+                 });
             builder.Entity<Department>(entity =>
             {
                 entity.ToTable("department", "leave");
