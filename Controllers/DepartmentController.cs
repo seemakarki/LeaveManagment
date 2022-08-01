@@ -23,7 +23,7 @@ namespace LeaveManagment.Controllers
         {
             if (model.Id == 0)
             {
-               await _context.AddAsync(model);
+                await _context.AddAsync(model);
             }
             else
             {
@@ -37,7 +37,13 @@ namespace LeaveManagment.Controllers
         [HttpGet]
         public async Task<Department> GetDepartment(int id)
         {
-            var data =await _context.department.FirstOrDefaultAsync(x => x.Id == id);
+            var data = await _context.department.FirstOrDefaultAsync(x => x.Id == id);
+            return data;
+        }
+        [HttpGet("List")]
+        public async Task<List<Department>> GetDepartment()
+        {
+            var data = _context.department.ToList();
             return data;
         }
     }

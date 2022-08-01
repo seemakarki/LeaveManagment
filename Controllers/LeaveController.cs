@@ -43,11 +43,6 @@ namespace LeaveManagment.Controllers
             var data = _context.leave.FirstOrDefault(x => x.Id == id);
             return data;
         }
-        [HttpGet("List")]
-        public async Task<List<Department>> GetDepartment()
-        {
-            var data = _context.department.ToList();
-            return data;
-        }
+        
     }
 }
