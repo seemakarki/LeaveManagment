@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace LeaveManagment.Controllers
 {
-    [Authorize]
+    
     [ApiController]
     [Route("salary")]
     public class SalaryController : ControllerBase

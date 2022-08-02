@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LeaveManagment.Controllers
 {
-    [Authorize]
+   
     [ApiController]
     [Route("email")]
     public class EmailController : ControllerBase

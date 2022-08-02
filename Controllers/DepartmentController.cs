@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LeaveManagment.Controllers
 {
-    [Authorize]
+   
     [ApiController]
     [Route("department")]
     public class DepartmentController : ControllerBase
