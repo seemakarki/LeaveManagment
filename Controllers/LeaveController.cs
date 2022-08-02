@@ -31,11 +31,19 @@ namespace LeaveManagment.Controllers
             return Ok(true);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Leave>> GetLeave(int id)
         {
 
             var data = await _leave.getLeave(id);
+            return Ok(data);
+        }
+
+        [HttpGet("list")]
+        public async Task<ActionResult<Leave>> getLeaveList()
+        {
+
+            var data = await _leave.getLeaveList();
             return Ok(data);
         }
         [HttpGet("remaining-days")]

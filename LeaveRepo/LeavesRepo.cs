@@ -59,6 +59,29 @@ namespace LeaveManagment.LeaveRepo
             };
             return item;
         }
+        public async Task<List<LeaveModel>> getLeaveList()
+        {
+            var data = await _context.leave.ToListAsync();
+            var items = new List<LeaveModel>();
+            foreach(var id in data)
+            {
+                var employee = await _context.employee.FirstOrDefaultAsync(x => x.Id == id.EmployeeId);
+
+                items.Add(new LeaveModel
+                {
+                    EmployeeId = id.EmployeeId,
+                    EmployeeName = employee.FirstName + " ," + employee.LastName,
+                    FromDate = id.FromDate,
+                    ToDate = id.ToDate,
+                    Type = id.Type,
+                    Status = id.Status,
+                    Reference = id.Reference
+                });
+
+            }
+         
+            return items;
+        }
         public async Task<List<LeaveModel>> getList()
         {
             var leaves = new List<LeaveModel>();

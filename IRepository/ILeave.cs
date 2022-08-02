@@ -12,5 +12,6 @@ namespace LeaveManagment.IRepository
         Task<LeaveModel> getLeave(int id);
         Task<List<LeaveModel>> getList();
         Task<int> ToTalLeave(int employeeId, int month);
+        Task<List<LeaveModel>> getLeaveList();
     }
 }

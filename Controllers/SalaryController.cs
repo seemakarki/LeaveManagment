@@ -56,7 +56,7 @@ namespace LeaveManagment.Controllers
             }
             return model.Id;
         }
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<Salary> GetSalary(int id)
         {
 

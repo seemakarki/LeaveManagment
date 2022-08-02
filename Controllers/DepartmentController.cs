@@ -36,7 +36,7 @@ namespace LeaveManagment.Controllers
             return model.Id;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<Department> GetDepartment(int id)
         {
             var data = await _context.department.FirstOrDefaultAsync(x => x.Id == id);

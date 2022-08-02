@@ -32,7 +32,7 @@ namespace LeaveManagment.Controllers
             return Ok(true);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
             var data = await _repo.getEmployee(id);
