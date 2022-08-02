@@ -52,7 +52,7 @@ const SidebarMenu = () => {
     const menuModel = items.find((item) => item.key === value.key);
 
     if (menuModel?.key === "1") {
-      console.log("Hello", menuModel?.key);
+      history.push("/depart");
     }
     if (menuModel?.key === "2") {
       history.push("/employee");
@@ -65,7 +65,7 @@ const SidebarMenu = () => {
     }
     if (menuModel?.key === "5") {
       localStorage.clear();
-      window.location.href = "/"
+      window.location.href = "/";
     }
   };
 

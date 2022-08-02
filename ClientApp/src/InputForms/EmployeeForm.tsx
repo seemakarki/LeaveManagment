@@ -3,9 +3,9 @@ import { Button, Col, DatePicker, Form, Input, Row, Select } from "antd";
 import styled from "styled-components";
 import axios from "axios";
 import { employee } from "./EmployeeTable";
-import { RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps, useHistory } from "react-router-dom";
 import { showSuccessMessage } from "../services/user.service";
-
+import { useForm } from "antd/lib/form/Form";
 
 const { Option } = Select;
 
@@ -20,49 +20,51 @@ const validateMessages = {
   },
 };
 
-
-const onFinish = async (values: any) => {
-
-  const res = await axios.post<any>("http://localhost:5002/employee", {
-    departmentId: Number(values.department),
-    firstName: values.name,
-    middleName: "",
-    lastName: "",
-    gender: values.gender,
-    address: values.address,
-    dob: values.dob,
-    phoneNo: values.contact,
-    email: "",
-    designation: values.position,
-    createdOn: new Date()
-  });
-
-  if (res) {
-    showSuccessMessage("succes");
-    // history.push("/employee")
-  }
-};
-
 const config = {
   rules: [
     { type: "object" as const, required: true, message: "Please select time!" },
   ],
 };
 const EmployeeForm = (props: RouteComponentProps<{ id: string }>) => {
-  const [employee, setEmployee] = useState<employee>()
+  const [employee, setEmployee] = useState<employee>();
+  const [form] = useForm();
+  const history = useHistory();
+  // const getData = async () => {
+  //   if (Number(props.match.params.id)) {
+  //     const res = await axios.get<employee>(
+  //       "http://localhost:5002/employee/List"
+  //     );
+  //     if (res) {
+  //       setEmployee(res.data);
+  //     }
+  //   }
+  // };
 
-  const getData = async () => {
-    if (Number(props.match.params.id)) {
-      const res = await axios.get<employee>("http://localhost:5002/employee")
-      if (res) {
-        setEmployee(res.data)
-      }
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
+  const onFinish = async (values: any) => {
+    const res = await axios.post<any>("http://localhost:5002/employee", {
+      departmentId: Number(values.department),
+      firstName: values.fname,
+      middleName: values.mname,
+      lastName: values.lname,
+      gender: values.gender,
+      address: values.address,
+      dob: values.dob,
+      phoneNo: values.contact,
+      email: values.email,
+      designation: values.position,
+      createdOn: new Date(),
+    });
+
+    if (res) {
+      showSuccessMessage("succes");
+      history.push("/employee");
+      form.resetFields();
     }
-  }
-
-  useEffect(() => {
-    getData()
-  }, [])
+  };
 
   return (
     <StyleEmployeeForm>
@@ -71,29 +73,39 @@ const EmployeeForm = (props: RouteComponentProps<{ id: string }>) => {
         name="nest-messages"
         onFinish={onFinish}
         validateMessages={validateMessages}
+        form={form}
       >
         <Row gutter={[16, 16]}>
-          <Col span={8}>
+          <Col span={6}>
             <Form.Item
-              name={"name"}
-              label="Name"
+              name={"fname"}
+              label="First Name:"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col span={6}>
+            <Form.Item name={"mname"} label="Middle Name:">
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={6}>
+            <Form.Item
+              name={"lname"}
+              label="Last Name:"
+              rules={[{ required: true }]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={6}>
             <Form.Item
               name={"address"}
               label="Address"
               rules={[{ required: true }]}
             >
               <Input />
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item name="dob" label="Date of Birth" {...config}>
-              <DatePicker style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -151,16 +163,31 @@ const EmployeeForm = (props: RouteComponentProps<{ id: string }>) => {
             </Form.Item>
           </Col>
         </Row>
+        <Row gutter={[16, 16]}>
+          <Col span={6}>
+            <Form.Item name="dob" label="Date of Birth" {...config}>
+              <DatePicker style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+          <Col span={6}>
+            <Form.Item name="email" label="Email">
+              <Input />
+            </Form.Item>
+          </Col>
+        </Row>
         <Form.Item>
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
-          <Button type="default" onClick={() => window.location.href = '/employee'} >
+          <Button
+            type="default"
+            onClick={() => (window.location.href = "/employee")}
+          >
             Cancel
           </Button>
         </Form.Item>
       </Form>
-    </StyleEmployeeForm >
+    </StyleEmployeeForm>
   );
 };
 

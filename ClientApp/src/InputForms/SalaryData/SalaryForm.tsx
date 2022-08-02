@@ -1,7 +1,11 @@
 import { Button, Col, DatePicker, Form, Input, Row, Select } from "antd";
+import { useForm } from "antd/lib/form/Form";
 import TextArea from "antd/lib/input/TextArea";
+import axios from "axios";
 import React from "react";
 import styled from "styled-components";
+import { showSuccessMessage } from "../../services/user.service";
+import { BooleanStatus } from "../LeaveData/LeaveForm";
 
 const { Option } = Select;
 
@@ -16,10 +20,6 @@ const validateMessages = {
   },
 };
 
-const onFinish = (values: any) => {
-  console.log(values);
-};
-
 const config = {
   rules: [
     { type: "object" as const, required: true, message: "Please select time!" },
@@ -27,6 +27,21 @@ const config = {
 };
 
 const SalaryForm = () => {
+  const [form] = useForm();
+
+  const onFinish = async (values: any) => {
+    const response = await axios.post<any>("http://localhost:5002/salary", {
+      employeeId: values.name,
+      duration: values.days,
+      salaryAmt: values.amount,
+      status: values.leavestatus,
+    });
+    if (response) {
+      showSuccessMessage("succes");
+      form.resetFields();
+    }
+  };
+
   return (
     <StyleEmployeeForm>
       <Form
@@ -34,23 +49,53 @@ const SalaryForm = () => {
         name="nest-messages"
         onFinish={onFinish}
         validateMessages={validateMessages}
+        form={form}
       >
-        <Row gutter={[30, 30]}>
-          <Col span={12}>
+        <Row gutter={[20, 20]}>
+          <Col span={6}>
             <Form.Item
-              name={["user", "name"]}
+              name={"name"}
               label="Employee Name"
+              rules={[{ required: true }]}
+            >
+              <Select
+                placeholder="Select Employee Name"
+                // onChange={onGenderChange}
+                allowClear
+              >
+                <Option value={1}>Dadip</Option>
+                <Option value={2}>Bhattaria</Option>
+                <Option value={3}>The-Deep</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={6}>
+            <Form.Item
+              name={"amount"}
+              label="Salary Amount"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col span={6}>
             <Form.Item
-              name={["user", "account"]}
-              label="Bank Account"
+              name="leavestatus"
+              label="Leave Status"
               rules={[{ required: true }]}
             >
+              <Select
+                placeholder="Select Type"
+                // onChange={onGenderChange}
+                allowClear
+              >
+                <Option value={BooleanStatus.Yes}>True</Option>
+                <Option value={BooleanStatus.No}>False</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={6}>
+            <Form.Item name={"days"} label="Days" rules={[{ required: true }]}>
               <Input />
             </Form.Item>
           </Col>
@@ -65,24 +110,7 @@ const SalaryForm = () => {
           </Col> */}
         </Row>
         <Row gutter={[20, 20]}>
-          <Col span={8}>
-            <Form.Item
-              name="leavetype"
-              label="Leave Type"
-              rules={[{ required: true }]}
-            >
-              <Select
-                placeholder="Select Type"
-                // onChange={onGenderChange}
-                allowClear
-              >
-                <Option value="half">Half Day</Option>
-                <Option value="full">Full Day</Option>
-                <Option value="other">other</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={8}>
+          {/* <Col span={8}>
             <Form.Item name="month" label="Month" {...config}>
               <DatePicker picker="month" style={{ width: "100%" }} />
             </Form.Item>
@@ -91,7 +119,7 @@ const SalaryForm = () => {
             <Form.Item name="Year" label="Year" {...config}>
               <DatePicker picker="year" style={{ width: "100%" }} />
             </Form.Item>
-          </Col>
+          </Col> */}
         </Row>
         <Form.Item>
           <Button type="primary" htmlType="submit">

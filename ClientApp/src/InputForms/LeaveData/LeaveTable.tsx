@@ -1,31 +1,48 @@
 import { MinusCircleOutlined } from "@ant-design/icons";
 import { Button, Space } from "antd";
 import Table, { ColumnsType } from "antd/lib/table";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+interface DataType {
+  key: number;
+  name: string;
+  type: string;
+  status: string;
+  fromdate: string;
+  todate: string;
+  days: number;
+  reason: string;
+}
+
 const LeaveTable = () => {
-  interface DataType {
-    key: number;
-    name: string;
-    type: string;
-    status: string;
-    fromdate: string;
-    todate: string;
-    days: number;
-    reason: string;
-  }
+  const [leaveEmployee, setLeaveEmployee] = useState<any>([]);
+
+  const FetchData = async () => {
+    const res = await axios.get("http://localhost:5002/leave/List");
+
+    if (res) {
+      setLeaveEmployee(res.data);
+    }
+  };
+
+  useEffect(() => {
+    FetchData();
+  }, []);
+
+  console.log(leaveEmployee);
 
   const columns: ColumnsType<DataType> = [
     {
       title: "S.N",
-      dataIndex: "key",
+      dataIndex: "employeeId",
       key: "key",
     },
     {
       title: "Name",
-      dataIndex: "name",
+      dataIndex: "employeeName",
       key: "name",
       //   render: (text: any) => <a>{text}</a>,
     },
@@ -41,22 +58,17 @@ const LeaveTable = () => {
     },
     {
       title: "From Date",
-      dataIndex: "fromdate",
+      dataIndex: "fromDate",
       key: "fromdate",
     },
     {
       title: "To Date",
-      dataIndex: "todate",
+      dataIndex: "toDate",
       key: "todate",
     },
     {
-      title: "Days",
-      dataIndex: "days",
-      key: "days",
-    },
-    {
       title: "Reason",
-      dataIndex: "reason",
+      dataIndex: "reference",
       key: "reason",
     },
 
@@ -69,18 +81,6 @@ const LeaveTable = () => {
           <a>Delete</a>
         </Space>
       ),
-    },
-  ];
-  const data: DataType[] = [
-    {
-      key: 1,
-      name: "Dadip Bhattarai",
-      type: "Full Day",
-      status: "Approaved",
-      fromdate: "2022-11-26",
-      todate: "2022-11-26",
-      days: 3,
-      reason: "Whatever, I dont wanna a tell you",
     },
   ];
 
@@ -99,7 +99,7 @@ const LeaveTable = () => {
           </Button>
         </Link>
       </EmployeeAdd>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={leaveEmployee} />
     </div>
   );
 };

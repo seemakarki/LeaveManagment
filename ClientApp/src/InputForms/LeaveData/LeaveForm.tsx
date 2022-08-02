@@ -1,7 +1,11 @@
-import { Button, Col, DatePicker, Form, Input, Row, Select } from "antd";
+import { Button, Col, DatePicker, Form, Row, Select } from "antd";
+import { useForm } from "antd/lib/form/Form";
 import TextArea from "antd/lib/input/TextArea";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { showSuccessMessage } from "../../services/user.service";
+import { employee } from "../EmployeeTable";
 
 const { Option } = Select;
 
@@ -16,17 +20,52 @@ const validateMessages = {
   },
 };
 
-const onFinish = (values: any) => {
-  console.log(values);
-};
-
 const config = {
   rules: [
     { type: "object" as const, required: true, message: "Please select time!" },
   ],
 };
 
+export const BooleanStatus = {
+  Yes: true,
+  No: false,
+} as const;
+
 const LeaveForm = () => {
+  const [employee, setEmployee] = useState<employee[]>([]);
+  const [selectedEmployee, setSelectedEmployee] = useState<employee | any>();
+  const [form] = useForm();
+  const onFinish = async (values: any) => {
+    const response = await axios.post<any>("http://localhost:5002/leave", {
+      employeeId: Number(values.employee),
+      type: values.leavetype,
+      status: values.status,
+      fromDate: values.fromDate,
+      toDate: values.toDate,
+      reference: values.reason,
+    });
+    if (response) {
+      showSuccessMessage("succes");
+      form.resetFields();
+    }
+  };
+
+  // const FetchData = async () => {
+  //   const { data } = await axios.get("http://localhost:5002/employee/List");
+  //   setEmployee(data);
+  // };
+
+  // useEffect(() => {
+  //   FetchData();
+  // }, []);
+
+  const onSelectEmployee = (id: any) => {
+    const findEmployee = employee.filter((eid) => eid.id === id);
+    setSelectedEmployee(findEmployee[0]);
+  };
+
+  console.log(employee);
+
   return (
     <StyleEmployeeForm>
       <Form
@@ -34,8 +73,26 @@ const LeaveForm = () => {
         name="nest-messages"
         onFinish={onFinish}
         validateMessages={validateMessages}
+        form={form}
       >
         <Row gutter={[30, 30]}>
+          <Col span={8}>
+            <Form.Item
+              name="employee"
+              label="Employee Name"
+              // rules={[{ required: true }]}
+            >
+              <Select
+                placeholder="Select Type"
+                onChange={onSelectEmployee}
+                allowClear
+              >
+                <Option value={1}>Dadip</Option>
+                <Option value={2}>Tilak</Option>
+                <Option value={3}>Ramesh</Option>
+              </Select>
+            </Form.Item>
+          </Col>
           <Col span={8}>
             <Form.Item
               name="leavetype"
@@ -52,40 +109,32 @@ const LeaveForm = () => {
                 <Option value="other">other</Option>
               </Select>
             </Form.Item>
-            {/* <Form.Item
-              name={["user", "Type"]}
-              label="Leave Type"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item> */}
           </Col>
           <Col span={8}>
             <Form.Item
-              name={["user", "status"]}
+              name={"status"}
               label="Leave Status"
               rules={[{ required: true }]}
             >
-              <Input />
+              <Select placeholder="Select Type" allowClear>
+                <Option value={BooleanStatus.Yes}>True</Option>
+                <Option value={BooleanStatus.No}>False</Option>
+              </Select>
             </Form.Item>
           </Col>
-          <Col span={8}>
-            <Form.Item
-              name={["user", "days"]}
-              label="Days"
-              rules={[{ required: true }]}
-            >
+          {/* <Col span={8}>
+            <Form.Item name={"days"} label="Days" rules={[{ required: true }]}>
               <Input />
             </Form.Item>
-          </Col>
+          </Col> */}
         </Row>
-        <Row gutter={[80, 80]}>
-          <Col span={12}>
+        <Row gutter={[50, 50]}>
+          <Col span={8}>
             <Form.Item name="fromDate" label="From Date" {...config}>
               <DatePicker style={{ width: "100%" }} />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col span={8}>
             <Form.Item name="toDate" label="To Date" {...config}>
               <DatePicker style={{ width: "100%" }} />
             </Form.Item>
@@ -94,7 +143,7 @@ const LeaveForm = () => {
         <Row>
           <Col span={12}>
             <Form.Item
-              name={["user", "reason"]}
+              name={"reason"}
               label="Reason"
               rules={[{ required: true }]}
             >

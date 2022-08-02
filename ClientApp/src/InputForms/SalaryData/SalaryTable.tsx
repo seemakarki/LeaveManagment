@@ -1,20 +1,21 @@
 import { DollarCircleOutlined } from "@ant-design/icons";
 import { Button, Space } from "antd";
 import Table, { ColumnsType } from "antd/lib/table";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const SalaryTable = () => {
-  interface DataType {
-    key: number;
-    name: string;
-    account: string;
-    leave: string;
-    month: string;
-    year: string;
-  }
+interface DataType {
+  key: number;
+  name: string;
+  account: string;
+  leave: string;
+  month: string;
+  year: string;
+}
 
+const SalaryTable = () => {
   const columns: ColumnsType<DataType> = [
     {
       title: "S.N",

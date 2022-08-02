@@ -1,4 +1,9 @@
-import { DeleteOutlined, DownloadOutlined, EditFilled, PlusOutlined } from "@ant-design/icons";
+import {
+  DeleteOutlined,
+  DownloadOutlined,
+  EditFilled,
+  PlusOutlined,
+} from "@ant-design/icons";
 import { Button, Space } from "antd";
 import Search from "antd/lib/input/Search";
 import Table, { ColumnsType } from "antd/lib/table";
@@ -8,41 +13,50 @@ import { Link, Route, RouteComponentProps, Switch } from "react-router-dom";
 import styled from "styled-components";
 import EmployeeForm from "./EmployeeForm";
 export interface employee {
-  id: number
+  id: number;
   firstName: string;
+  middleName: string;
+  lastName: string;
   address: string;
   dob: string;
-  designation: string
+  designation: string;
   position: string;
-  gender: string
-  phoneNo: string
+  gender: string;
+  phoneNo: string;
+  email: string;
 }
 
 const EmployeeTable = () => {
-
-  const [employee, setEmployee] = useState<employee[]>([])
-  const [entryMode, setEntryMode] = useState<boolean>();
-  const [editId, setEditId] = useState<number>();
+  const [employee, setEmployee] = useState<employee[]>([]);
 
   const getData = async () => {
-    const res: any = await axios.get<employee[]>("http://localhost:5002/employee/List")
-
+    const res = await axios.get("http://localhost:5002/employee/List");
     if (res) {
-      setEmployee(res.data)
+      setEmployee(res.data);
     }
-  }
+  };
 
   useEffect(() => {
-    getData()
-  }, [])
+    getData();
+  }, []);
 
+  console.log(employee);
+
+  const handleDelete = (id: any) => {
+    const deleteEmployee = employee.filter((emp) => emp.id !== id);
+    setEmployee(deleteEmployee);
+  };
 
   const columns: ColumnsType<employee> = [
     {
       title: "Name",
-      dataIndex: "firstName",
-      key: "firstName",
-      //   render: (text: any) => <a>{text}</a>,
+      dataIndex: "name",
+      key: "name",
+      render: (_, info) => (
+        <span>
+          {info.firstName} {info.middleName} {info.lastName}
+        </span>
+      ),
     },
     {
       title: "Address",
@@ -66,20 +80,34 @@ const EmployeeTable = () => {
       key: "phoneNo",
     },
     {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+    {
       title: "",
       key: "id",
       dataIndex: "id",
       render: (val, rec) => (
-        <div style={{ cursor: 'pointer' }} ><EditFilled
-         onClick={() => window.location.href = `/employee/add/${rec.id}`} /></div>
+        <div style={{ cursor: "pointer" }}>
+          <EditFilled
+            onClick={() => (window.location.href = `/employee/add/${rec.id}`)}
+          />
+        </div>
       ),
     },
     {
       title: "",
       key: "id",
-      render: (_, record) => (
-        <div style={{ cursor: 'pointer' }} ><DeleteOutlined /></div>
-      ),
+      render: (_, record) => {
+        console.log(record);
+
+        return (
+          <div style={{ cursor: "pointer" }}>
+            <DeleteOutlined onClick={() => handleDelete(record.id)} />
+          </div>
+        );
+      },
     },
   ];
 
@@ -114,10 +142,10 @@ const EmployeeTable = () => {
 };
 
 <Switch>
-<React.Suspense fallback={true}>
-  <Route path={`/employee/add/:id?`} component={EmployeeForm} />
-</React.Suspense>
-</Switch>
+  <React.Suspense fallback={true}>
+    <Route path={`/employee/add/:id?`} component={EmployeeForm} />
+  </React.Suspense>
+</Switch>;
 export default EmployeeTable;
 
 const EmployeeAdd = styled.div`

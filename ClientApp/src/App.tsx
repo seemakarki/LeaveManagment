@@ -20,6 +20,7 @@ import SalaryForm from "./InputForms/SalaryData/SalaryForm";
 import LeaveForm from "./InputForms/LeaveData/LeaveForm";
 import SalaryTable from "./InputForms/SalaryData/SalaryTable";
 import EmployeeTable from "./InputForms/EmployeeTable";
+import Department from "./InputForms/Department/Department";
 
 type Props = {};
 
@@ -37,7 +38,7 @@ class App extends Component<Props, State> {
     this.state = {
       showModeratorBoard: false,
       showAdminBoard: false,
-      currentUser: localStorage.getItem("curUser") || '',
+      currentUser: localStorage.getItem("curUser") || "",
     };
   }
 
@@ -74,13 +75,14 @@ class App extends Component<Props, State> {
     return (
       <div>
         <div>
-          {currentUser != '' ? <SidebarMenu /> : null}
+          {currentUser != "" ? <SidebarMenu /> : null}
 
           <div style={{ marginLeft: "256px" }}>
             <Switch>
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
-              <Route exact path="/dashboard" component={DashBoard} />
+              <Route exact path={["/dashboard", "/"]} component={DashBoard} />
+              <Route exact path="/depart" component={Department} />
               <Route exact path="/employee" component={Employee} />
               <Route path="/employee/add/:id?" component={EmployeeForm} />
               <Route exact path="/leave" component={LeaveEmp} />
