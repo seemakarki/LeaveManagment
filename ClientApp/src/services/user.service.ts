@@ -2,7 +2,7 @@ import { message } from 'antd';
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = 'http://localhost:8080/api/test/';
+const API_URL = 'http://localhost:5002';
 
 class UserService {
   getPublicContent() {
@@ -24,6 +24,10 @@ class UserService {
 export const showSuccessMessage = (title?: string | React.ReactNode) => {
   message.destroy();
   message.success(title || "Task completed.")
+}
+export const showErrorMessage = (title?: string | React.ReactNode) => {
+  message.destroy();
+  message.error(title || "Task failed, please retry.", 5)
 }
 
 export default new UserService();

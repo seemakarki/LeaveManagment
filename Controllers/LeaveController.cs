@@ -12,6 +12,7 @@ namespace LeaveManagment.Controllers
 {
    
     [ApiController]
+    [Authorize]
     [Route("leave")]
     public class LeaveController : ControllerBase
     {

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 namespace LeaveManagment.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("register")]
     public class RegistrationController : ControllerBase
     {

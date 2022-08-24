@@ -1,8 +1,7 @@
-import { Component } from "react";
+import { Component, useEffect, useState } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import AuthService from "./services/auth.service";
 import IUser from "./types/user.type";
 import Login from "./components/login.component";
 import Register from "./components/register.component";
@@ -21,81 +20,33 @@ import LeaveForm from "./InputForms/LeaveData/LeaveForm";
 import SalaryTable from "./InputForms/SalaryData/SalaryTable";
 import EmployeeTable from "./InputForms/EmployeeTable";
 import Department from "./InputForms/Department/Department";
+import React from "react";
+import { getMeta } from "./services/auth.service";
 
-type Props = {};
+function App() {
+  const [currUser, setCurrUser] = useState<string>('')
 
-type State = {
-  showModeratorBoard: boolean;
-  showAdminBoard: boolean;
-  currentUser?: string | undefined;
-};
-
-class App extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.logOut = this.logOut.bind(this);
-
-    this.state = {
-      showModeratorBoard: false,
-      showAdminBoard: false,
-      currentUser: localStorage.getItem("curUser") || "",
-    };
-  }
-
-  componentDidMount() {
-    const user = AuthService.getCurrentUser();
-
-    if (user) {
-      this.setState({
-        currentUser: user,
-        showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
-        showAdminBoard: user.roles.includes("ROLE_ADMIN"),
-      });
-    }
-
-    EventBus.on("logout", this.logOut);
-  }
-
-  componentWillUnmount() {
-    EventBus.remove("logout", this.logOut);
-  }
-
-  logOut() {
-    AuthService.logout();
-    this.setState({
-      showModeratorBoard: false,
-      showAdminBoard: false,
-      currentUser: undefined,
-    });
-  }
-
-  render() {
-    const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
-
-    return (
-      <div>
-        <div>
-          {currentUser != "" ? <SidebarMenu /> : null}
-
-          <div style={{ marginLeft: "256px" }}>
-            <Switch>
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path={["/dashboard", "/"]} component={DashBoard} />
-              <Route exact path="/depart" component={Department} />
-              <Route exact path="/employee" component={Employee} />
-              <Route path="/employee/add/:id?" component={EmployeeForm} />
-              <Route exact path="/leave" component={LeaveEmp} />
-              <Route path="/leave/add" component={LeaveForm} />
-              <Route exact path="/salary" component={SalaryTable} />
-              <Route path="/salary/add" component={SalaryForm} />
-            </Switch>
-          </div>
-        </div>
-        {/*<AuthVerify logOut={this.logOut}/> */}
+  return (
+    <div>
+      {currUser != "" ? <SidebarMenu /> : null}
+      <div style={{ marginLeft: "256px" }}>
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path={["/dashboard", "/"]} component={DashBoard} />
+          <Route exact path="/depart" component={Department} />
+          <Route exact path="/employee" component={Employee} />
+          <Route path="/employee/add/:id?" component={EmployeeForm} />
+          <Route exact path="/leave" component={LeaveEmp} />
+          <Route path="/leave/add" component={LeaveForm} />
+          <Route exact path="/salary" component={SalaryTable} />
+          <Route path="/salary/add" component={SalaryForm} />
+        </Switch>
       </div>
-    );
-  }
+    </div>
+
+  );
 }
 
-export default App;
+
+export default App

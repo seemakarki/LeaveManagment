@@ -5,10 +5,16 @@ import * as Yup from "yup";
 
 // import AuthService from "../services/auth.service";
 import axios from "axios";
+import { getMeta } from "../services/auth.service";
 // import { setFlagsFromString } from "v8";
 
 interface RouterProps {
   history: string;
+}
+export interface userMeta {
+  UserName: string
+  RoleId: number
+  UserId: number
 }
 
 type Props = RouteComponentProps<RouterProps>;
@@ -43,24 +49,27 @@ export default class Login extends Component<Props, State> {
   async handleLogin(formValue: { username: string; password: string }) {
     const { username, password } = formValue;
 
-    // console.log("username is ", username);
-    // console.log("password is ", password);
 
     this.setState({
       message: "",
       loading: true,
     });
 
-    //const loginPost = await axios.post("url", {
-    //  //actual url of  login post
-    //  username: username,
-    //  password: password,
-    //});
+    const loginPost = await axios.post("http://localhost:5002/login", {
+      //actual url of  login post
+      username: username,
+      password: password,
+    });
 
-      //if (loginPost) {
-          localStorage.setItem("curUser", "hello");
-          window.location.href = "/dashboard"; // to dash board page
-    //}
+    if (loginPost) {
+      var meta = await getMeta()
+      if (meta)
+        this.setState({
+          username: meta.UserName,
+          loading: true,
+        });
+      window.location.href = "/dashboard"; // to dash board page
+    }
 
     // AuthService.login(username, password).then(
     //   () => {

@@ -13,6 +13,7 @@ namespace LeaveManagment.Controllers
 {
     
     [ApiController]
+    [Authorize]
     [Route("salary")]
     public class SalaryController : ControllerBase
     {

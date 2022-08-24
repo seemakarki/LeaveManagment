@@ -16,6 +16,7 @@ namespace LeaveManagment.Controllers
 {
    
     [ApiController]
+    [Authorize]
     [Route("email")]
     public class EmailController : ControllerBase
     {
