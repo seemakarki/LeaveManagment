@@ -7,9 +7,9 @@ import {
   UserDeleteOutlined,
   UsergroupAddOutlined,
 } from "@ant-design/icons";
-import { Button, Menu } from "antd";
+import { Button, Divider, Menu, Typography } from "antd";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 const items = [
@@ -65,7 +65,7 @@ const SidebarMenu = () => {
     }
     if (menuModel?.key === "5") {
       localStorage.clear();
-      window.location.href = "/";
+      window.location.href = "/login";
     }
   };
 
@@ -78,7 +78,32 @@ const SidebarMenu = () => {
         top: 0,
       }}
     >
-      {collapsed ? (
+      <Link to="/dashboard">
+        <StyleButton>
+          <Typography
+            style={{
+              fontSize: "1.05rem",
+              fontWeight: "bold",
+              color: "#fff",
+              textTransform: "uppercase",
+            }}
+          >
+            Leave Management
+          </Typography>
+          <Button
+            type="primary"
+            style={{
+              backgroundColor: "teal",
+              width: "80px",
+              boxShadow: "none",
+              border: "none",
+            }}
+          >
+            <MenuFoldOutlined />
+          </Button>
+        </StyleButton>
+      </Link>
+      {/* {collapsed ? (
         <Button
           type="primary"
           onClick={toggleCollapsed}
@@ -92,15 +117,19 @@ const SidebarMenu = () => {
             {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           </Button>
         </StyleButton>
-      )}
+      )} */}
       <Menu
         // defaultSelectedKeys={['1']}
         onClick={(value) => pageChange(value)}
         mode="inline"
-        theme="dark"
         inlineCollapsed={collapsed}
         items={items}
-        style={{ fontSize: "1.1rem", height: "100%" }}
+        style={{
+          fontSize: "1.1rem",
+          height: "100%",
+          backgroundColor: "	#008080",
+          color: "#fff",
+        }}
       />
     </div>
   );
@@ -109,9 +138,10 @@ const SidebarMenu = () => {
 export default SidebarMenu;
 
 const StyleButton = styled.div`
-  background-color: #001529;
+  background-color: teal;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  padding: 9px 0;
+  justify-content: space-around;
   align-items: flex-end;
+  border-bottom: 2px solid #fff;
 `;

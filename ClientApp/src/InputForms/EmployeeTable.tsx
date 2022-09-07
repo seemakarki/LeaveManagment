@@ -11,7 +11,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, Route, RouteComponentProps, Switch } from "react-router-dom";
 import styled from "styled-components";
+import SidebarMenu from "../components/SidebarMenu";
 import EmployeeForm from "./EmployeeForm";
+import TopBar from "./TopBar";
 export interface employee {
   id: number;
   firstName: string;
@@ -115,6 +117,8 @@ const EmployeeTable = () => {
 
   return (
     <div style={{ width: "100%" }}>
+    
+      <TopBar />
       <EmployeeAdd>
         <Search
           placeholder="Search Here"

@@ -1,36 +1,41 @@
-import { userMeta } from "../components/login.component";
-import { get, post } from "./authAjaxService";
+import axios from "axios";
 
-const localStorageAuthTokenKey = 'leave'
+const API_URL = "http://localhost:8080/api/auth/";
 
-export function getBearerToken() {
-    return localStorage.getItem(localStorageAuthTokenKey)
+class AuthService {
+  login(username: string, password: string) {
+    return axios
+      .post(API_URL + "signin", {
+        username,
+        password
+      })
+      .then(response => {
+        if (response.data.accessToken) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+        }
+
+        return response.data;
+      });
+  }
+
+  logout() {
+    localStorage.removeItem("user");
+  }
+
+  register(username: string, email: string, password: string) {
+    return axios.post(API_URL + "signup", {
+      username,
+      email,
+      password
+    });
+  }
+
+  getCurrentUser() {
+    const userStr = localStorage.getItem("user");
+    if (userStr) return JSON.parse(userStr);
+
+    return null;
+  }
 }
 
-export function setBearerToken(token: string) {
-    localStorage.setItem(localStorageAuthTokenKey, token)
-}
-
-// export async function logout() {
-//     const res = await post<any>('/usermeta/logout', {})
-//     if(res) {
-//         localStorage.removeItem(localStorageAuthTokenKey);
-//         location.href = "/login"
-//     }
-// }
-
-export function goToLoginPage() {
-    window.location.href = `/login`
-}
-
-
-
-export async function getMeta(): Promise<userMeta | null> {
-    const res = await get<userMeta>('/register/get-meta')
-    return res && res.data;
-}
-
-// export async function getUsers() {
-//     const res = await get<user[]>('/user')
-//     return res && res.data;
-// }
+export default new AuthService();

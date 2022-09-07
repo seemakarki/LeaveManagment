@@ -1,10 +1,10 @@
 import { DollarCircleOutlined } from "@ant-design/icons";
 import { Button, Space } from "antd";
 import Table, { ColumnsType } from "antd/lib/table";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import SidebarMenu from "../../components/SidebarMenu";
+import TopBar from "../TopBar";
 
 interface DataType {
   key: number;
@@ -73,6 +73,7 @@ const SalaryTable = () => {
 
   return (
     <div style={{ width: "100%" }}>
+      <TopBar />
       <EmployeeAdd>
         <Link to="/salary/add">
           <Button

@@ -16,7 +16,7 @@ type State = {
 export default class Register extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    // this.handleRegister = this.handleRegister.bind(this);
+    this.handleRegister = this.handleRegister.bind(this);
 
     this.state = {
       username: "",
@@ -55,40 +55,40 @@ export default class Register extends Component<Props, State> {
     });
   }
 
-  // handleRegister(formValue: { username: string; email: string; password: string }) {
-  //   const { username, email, password } = formValue;
+  handleRegister(formValue: { username: string; email: string; password: string }) {
+    const { username, email, password } = formValue;
 
-  //   this.setState({
-  //     message: "",
-  //     successful: false
-  //   });
+    this.setState({
+      message: "",
+      successful: false
+    });
 
-  //   AuthService.register(
-  //     username,
-  //     email,
-  //     password
-  //   ).then(
-  //     response => {
-  //       this.setState({
-  //         message: response.data.message,
-  //         successful: true
-  //       });
-  //     },
-  //     error => {
-  //       const resMessage =
-  //         (error.response &&
-  //           error.response.data &&
-  //           error.response.data.message) ||
-  //         error.message ||
-  //         error.toString();
+    //AuthService.register(
+    //  username,
+    //  email,
+    //  password
+    //).then(
+    //  response => {
+    //    this.setState({
+    //      message: response.data.message,
+    //      successful: true
+    //    });
+    //  },
+    //  error => {
+    //    const resMessage =
+    //      (error.response &&
+    //        error.response.data &&
+    //        error.response.data.message) ||
+    //      error.message ||
+    //      error.toString();
 
-  //       this.setState({
-  //         successful: false,
-  //         message: resMessage
-  //       });
-  //     }
-  //   );
-  // }
+    //    this.setState({
+    //      successful: false,
+    //      message: resMessage
+    //    });
+    //  }
+    //);
+  }
 
   render() {
     const { successful, message } = this.state;
@@ -111,7 +111,7 @@ export default class Register extends Component<Props, State> {
           <Formik
             initialValues={initialValues}
             validationSchema={this.validationSchema}
-            onSubmit={'' as any}
+            onSubmit={this.handleRegister}
           >
             <Form>
               {!successful && (

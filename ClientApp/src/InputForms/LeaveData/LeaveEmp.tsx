@@ -1,15 +1,20 @@
 import React from "react";
 import App from "../../App";
+import SidebarMenu from "../../components/SidebarMenu";
+import TopBar from "../TopBar";
 import LeaveForm from "./LeaveForm";
 import LeaveTable from "./LeaveTable";
 
 const LeaveEmp = () => {
   return (
-    <div style={{ width: "100%", display: "inline-flex" }}>
-      {/* <App /> */}
-      {/* <LeaveForm /> */}
-      <LeaveTable />
-    </div>
+    <>
+      <TopBar />
+      <div style={{ width: "100%", display: "inline-flex" }}>
+        {/* <App /> */}
+        {/* <LeaveForm /> */}
+        <LeaveTable />
+      </div>
+    </>
   );
 };
 

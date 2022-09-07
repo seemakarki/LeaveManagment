@@ -6,6 +6,8 @@ import { employee } from "./EmployeeTable";
 import { RouteComponentProps, useHistory } from "react-router-dom";
 import { showSuccessMessage } from "../services/user.service";
 import { useForm } from "antd/lib/form/Form";
+import TopBar from "./TopBar";
+import SidebarMenu from "../components/SidebarMenu";
 
 const { Option } = Select;
 
@@ -67,127 +69,131 @@ const EmployeeForm = (props: RouteComponentProps<{ id: string }>) => {
   };
 
   return (
-    <StyleEmployeeForm>
-      <Form
-        layout="vertical"
-        name="nest-messages"
-        onFinish={onFinish}
-        validateMessages={validateMessages}
-        form={form}
-      >
-        <Row gutter={[16, 16]}>
-          <Col span={6}>
-            <Form.Item
-              name={"fname"}
-              label="First Name:"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item name={"mname"} label="Middle Name:">
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item
-              name={"lname"}
-              label="Last Name:"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item
-              name={"address"}
-              label="Address"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={[16, 16]}>
-          <Col span={6}>
-            <Form.Item
-              name={"contact"}
-              label="Contact"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item
-              name={"position"}
-              label="Position"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item
-              name="gender"
-              label="Gender"
-              rules={[{ required: true }]}
-            >
-              <Select
-                placeholder="Select Gender"
-                // onChange={this.onGenderChange}
-                allowClear
+    <>
+     
+      <TopBar />
+      <StyleEmployeeForm>
+        <Form
+          layout="vertical"
+          name="nest-messages"
+          onFinish={onFinish}
+          validateMessages={validateMessages}
+          form={form}
+        >
+          <Row gutter={[16, 16]}>
+            <Col span={6}>
+              <Form.Item
+                name={"fname"}
+                label="First Name:"
+                rules={[{ required: true }]}
               >
-                <Option value="male">Male</Option>
-                <Option value="female">Female</Option>
-                <Option value="other">Other</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item
-              name="department"
-              label="Department"
-              rules={[{ required: true }]}
-            >
-              <Select
-                placeholder="Select Depart"
-                // onChange={this.onDepartChange}
-                allowClear
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item name={"mname"} label="Middle Name:">
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item
+                name={"lname"}
+                label="Last Name:"
+                rules={[{ required: true }]}
               >
-                <Option value="1">Depart1</Option>
-                <Option value="2">Depart2</Option>
-                <Option value="3">Depart3</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={[16, 16]}>
-          <Col span={6}>
-            <Form.Item name="dob" label="Date of Birth" {...config}>
-              <DatePicker style={{ width: "100%" }} />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item name="email" label="Email">
-              <Input />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-          <Button
-            type="default"
-            onClick={() => (window.location.href = "/employee")}
-          >
-            Cancel
-          </Button>
-        </Form.Item>
-      </Form>
-    </StyleEmployeeForm>
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item
+                name={"address"}
+                label="Address"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={[16, 16]}>
+            <Col span={6}>
+              <Form.Item
+                name={"contact"}
+                label="Contact"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item
+                name={"position"}
+                label="Position"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item
+                name="gender"
+                label="Gender"
+                rules={[{ required: true }]}
+              >
+                <Select
+                  placeholder="Select Gender"
+                  // onChange={this.onGenderChange}
+                  allowClear
+                >
+                  <Option value="male">Male</Option>
+                  <Option value="female">Female</Option>
+                  <Option value="other">Other</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item
+                name="department"
+                label="Department"
+                rules={[{ required: true }]}
+              >
+                <Select
+                  placeholder="Select Depart"
+                  // onChange={this.onDepartChange}
+                  allowClear
+                >
+                  <Option value="1">Depart1</Option>
+                  <Option value="2">Depart2</Option>
+                  <Option value="3">Depart3</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={[16, 16]}>
+            <Col span={6}>
+              <Form.Item name="dob" label="Date of Birth" {...config}>
+                <DatePicker style={{ width: "100%" }} />
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item name="email" label="Email">
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+            <Button
+              type="default"
+              onClick={() => (window.location.href = "/employee")}
+            >
+              Cancel
+            </Button>
+          </Form.Item>
+        </Form>
+      </StyleEmployeeForm>
+    </>
   );
 };
 

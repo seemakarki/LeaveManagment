@@ -5,6 +5,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import TopBar from "../TopBar";
 
 interface DataType {
   key: number;
@@ -31,8 +32,6 @@ const LeaveTable = () => {
   useEffect(() => {
     FetchData();
   }, []);
-
-  console.log(leaveEmployee);
 
   const columns: ColumnsType<DataType> = [
     {

@@ -4,8 +4,10 @@ import TextArea from "antd/lib/input/TextArea";
 import axios from "axios";
 import React from "react";
 import styled from "styled-components";
+import SidebarMenu from "../../components/SidebarMenu";
 import { showSuccessMessage } from "../../services/user.service";
 import { BooleanStatus } from "../LeaveData/LeaveForm";
+import TopBar from "../TopBar";
 
 const { Option } = Select;
 
@@ -43,63 +45,69 @@ const SalaryForm = () => {
   };
 
   return (
-    <StyleEmployeeForm>
-      <Form
-        layout="vertical"
-        name="nest-messages"
-        onFinish={onFinish}
-        validateMessages={validateMessages}
-        form={form}
-      >
-        <Row gutter={[20, 20]}>
-          <Col span={6}>
-            <Form.Item
-              name={"name"}
-              label="Employee Name"
-              rules={[{ required: true }]}
-            >
-              <Select
-                placeholder="Select Employee Name"
-                // onChange={onGenderChange}
-                allowClear
+    <>
+      <TopBar />
+      <StyleEmployeeForm>
+        <Form
+          layout="vertical"
+          name="nest-messages"
+          onFinish={onFinish}
+          validateMessages={validateMessages}
+          form={form}
+        >
+          <Row gutter={[20, 20]}>
+            <Col span={6}>
+              <Form.Item
+                name={"name"}
+                label="Employee Name"
+                rules={[{ required: true }]}
               >
-                <Option value={1}>Dadip</Option>
-                <Option value={2}>Bhattaria</Option>
-                <Option value={3}>The-Deep</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item
-              name={"amount"}
-              label="Salary Amount"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item
-              name="leavestatus"
-              label="Leave Status"
-              rules={[{ required: true }]}
-            >
-              <Select
-                placeholder="Select Type"
-                // onChange={onGenderChange}
-                allowClear
+                <Select
+                  placeholder="Select Employee Name"
+                  // onChange={onGenderChange}
+                  allowClear
+                >
+                  <Option value={1}>Dadip</Option>
+                  <Option value={2}>Bhattaria</Option>
+                  <Option value={3}>The-Deep</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item
+                name={"amount"}
+                label="Salary Amount"
+                rules={[{ required: true }]}
               >
-                <Option value={BooleanStatus.Yes}>True</Option>
-                <Option value={BooleanStatus.No}>False</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item name={"days"} label="Days" rules={[{ required: true }]}>
-              <Input />
-            </Form.Item>
-          </Col>
-          {/* <Col span={8}>
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item
+                name="leavestatus"
+                label="Leave Status"
+                rules={[{ required: true }]}
+              >
+                <Select
+                  placeholder="Select Type"
+                  // onChange={onGenderChange}
+                  allowClear
+                >
+                  <Option value={BooleanStatus.Yes}>True</Option>
+                  <Option value={BooleanStatus.No}>False</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item
+                name={"days"}
+                label="Days"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            {/* <Col span={8}>
             <Form.Item
               name={["user", "days"]}
               label="Days"
@@ -108,9 +116,9 @@ const SalaryForm = () => {
               <Input />
             </Form.Item>
           </Col> */}
-        </Row>
-        <Row gutter={[20, 20]}>
-          {/* <Col span={8}>
+          </Row>
+          <Row gutter={[20, 20]}>
+            {/* <Col span={8}>
             <Form.Item name="month" label="Month" {...config}>
               <DatePicker picker="month" style={{ width: "100%" }} />
             </Form.Item>
@@ -120,14 +128,15 @@ const SalaryForm = () => {
               <DatePicker picker="year" style={{ width: "100%" }} />
             </Form.Item>
           </Col> */}
-        </Row>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-    </StyleEmployeeForm>
+          </Row>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </StyleEmployeeForm>
+    </>
   );
 };
 
