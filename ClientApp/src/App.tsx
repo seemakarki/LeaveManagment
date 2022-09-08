@@ -34,11 +34,10 @@ class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.logOut = this.logOut.bind(this);
-
     this.state = {
       showModeratorBoard: false,
       showAdminBoard: false,
-      currentUser: localStorage.getItem("leave") || "",
+      currentUser:localStorage.getItem("leave")||"",
     };
   }
 
@@ -80,7 +79,7 @@ class App extends Component<Props, State> {
 
           <div style={{ marginLeft: "256px" }}>
             <Switch>
-              <Route exact path="/" component={Login} />
+              <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
               <Route exact path={"/dashboard"} component={DashBoard} />
               <Route exact path="/depart" component={Department} />
