@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import axios from "axios";
 
 import { showErrorMessage } from "../services/user.service";
+import { setBearerToken } from "../services/auth";
 
 // import AuthService from "../services/auth.service";
 // import { setFlagsFromString } from "v8";
@@ -47,73 +48,73 @@ export default class Login extends Component<Props, State> {
     });
   }
 
-  async handleLogin(formValue: { username: string; password: string }) {
-    // const { username, password } = formValue;
-
-    // console.log("username is ", username);
-    // console.log("password is ", password);
-
-    this.setState({
-      message: "",
-      loading: true,
-    });
-
-    // const loginPost = await axios.post("http://localhost:5002/login", {
-    //   //actual url of  login post
-    //   username: this.state.username,
-    //   password: this.state.password,
-    // });
-
-    // if (loginPost) {
-    localStorage.setItem("curUser", "hello");
-    window.location.href = "/dashboard"; // to dash board page
-    // }
-
-    // AuthService.login(username, password).then(
-    //   () => {
-    //     this.props.history.push("/profile");
-    //     window.location.reload();
-    //   },
-    //   error => {
-    //     const resMessage =
-    //       (error.response &&
-    //         error.response.data &&
-    //         error.response.data.message) ||
-    //       error.message ||
-    //       error.toString();
-
-    //     this.setState({
-    //       loading: false,
-    //       message: resMessage
-    //     });
-    //   }
-    // );
-  }
-
   // async handleLogin(formValue: { username: string; password: string }) {
-  //   const { username, password } = formValue;
+  //   // const { username, password } = formValue;
 
+  //   // console.log("username is ", username);
+  //   // console.log("password is ", password);
 
   //   this.setState({
   //     message: "",
   //     loading: true,
   //   });
 
-  //   const loginPost = await axios.post<any>("http://localhost:5002/login",{
-  //     userName:username,
-  //     password:password
-  //   })
+  //   // const loginPost = await axios.post("http://localhost:5002/login", {
+  //   //   //actual url of  login post
+  //   //   username: this.state.username,
+  //   //   password: this.state.password,
+  //   // });
 
-  //   if (loginPost) {
-  //     console.log(loginPost.data)
-  //     setBearerToken(loginPost.data)
-  //     window.location.href = "/dashboard"; // to dash board page
-  //   }
-  //   else {
-  //     this.setState({ ...this.state, loading: false })
-  //     showErrorMessage("Please use correct password")
+  //   // if (loginPost) {
+  //   localStorage.setItem("curUser", "hello");
+  //   window.location.href = "/dashboard"; // to dash board page
+  //   // }
 
-  //   }
+  //   // AuthService.login(username, password).then(
+  //   //   () => {
+  //   //     this.props.history.push("/profile");
+  //   //     window.location.reload();
+  //   //   },
+  //   //   error => {
+  //   //     const resMessage =
+  //   //       (error.response &&
+  //   //         error.response.data &&
+  //   //         error.response.data.message) ||
+  //   //       error.message ||
+  //   //       error.toString();
+
+  //   //     this.setState({
+  //   //       loading: false,
+  //   //       message: resMessage
+  //   //     });
+  //   //   }
+  //   // );
+  // }
+
+  async handleLogin(formValue: { username: string; password: string }) {
+    const { username, password } = formValue;
+
+
+    this.setState({
+      message: "",
+      loading: true,
+    });
+
+    const loginPost = await axios.post<any>("http://localhost:5002/login",{
+      userName:username,
+      password:password
+    })
+
+    if (loginPost) {
+      setBearerToken(loginPost.data)
+      window.location.href = "/dashboard"; // to dash board page
+    }
+    else {
+      this.setState({ ...this.state, loading: false })
+      showErrorMessage("Please use correct password")
+
+    }
+  }
 
 
   //   // AuthService.login(username, password).then(

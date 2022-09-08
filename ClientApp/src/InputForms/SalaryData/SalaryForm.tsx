@@ -5,6 +5,7 @@ import axios from "axios";
 import React from "react";
 import styled from "styled-components";
 import SidebarMenu from "../../components/SidebarMenu";
+import { post } from "../../services/authAjaxService";
 import { showSuccessMessage } from "../../services/user.service";
 import { BooleanStatus } from "../LeaveData/LeaveForm";
 import TopBar from "../TopBar";
@@ -32,7 +33,7 @@ const SalaryForm = () => {
   const [form] = useForm();
 
   const onFinish = async (values: any) => {
-    const response = await axios.post<any>("http://localhost:5002/salary", {
+    const response = await post<any>("http://localhost:5002/salary", {
       employeeId: values.name,
       duration: values.days,
       salaryAmt: values.amount,

@@ -12,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Route, RouteComponentProps, Switch } from "react-router-dom";
 import styled from "styled-components";
 import SidebarMenu from "../components/SidebarMenu";
+import { get } from "../services/authAjaxService";
 import EmployeeForm from "./EmployeeForm";
 import TopBar from "./TopBar";
 export interface employee {
@@ -32,7 +33,7 @@ const EmployeeTable = () => {
   const [employee, setEmployee] = useState<employee[]>([]);
 
   const getData = async () => {
-    const res = await axios.get("http://localhost:5002/employee/List");
+    const res = await get<employee[]>("http://localhost:5002/employee/List");
     if (res) {
       setEmployee(res.data);
     }

@@ -8,6 +8,7 @@ import { showSuccessMessage } from "../services/user.service";
 import { useForm } from "antd/lib/form/Form";
 import TopBar from "./TopBar";
 import SidebarMenu from "../components/SidebarMenu";
+import { post } from "../services/authAjaxService";
 
 const { Option } = Select;
 
@@ -47,7 +48,7 @@ const EmployeeForm = (props: RouteComponentProps<{ id: string }>) => {
   // }, []);
 
   const onFinish = async (values: any) => {
-    const res = await axios.post<any>("http://localhost:5002/employee", {
+    const res = await post<any>("http://localhost:5002/employee", {
       departmentId: Number(values.department),
       firstName: values.fname,
       middleName: values.mname,

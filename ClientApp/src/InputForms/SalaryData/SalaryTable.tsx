@@ -1,9 +1,11 @@
 import { DollarCircleOutlined } from "@ant-design/icons";
 import { Button, Space } from "antd";
 import Table, { ColumnsType } from "antd/lib/table";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SidebarMenu from "../../components/SidebarMenu";
+import { get } from "../../services/authAjaxService";
 import TopBar from "../TopBar";
 
 interface DataType {
@@ -60,16 +62,20 @@ const SalaryTable = () => {
       ),
     },
   ];
-  const data: DataType[] = [
-    {
-      key: 1,
-      name: "Dadip Bhattarai",
-      account: "098477436436732",
-      leave: "4/20 Days",
-      month: "june",
-      year: "2022",
-    },
-  ];
+  const [salary, setSalary] = useState<DataType[]>([]);
+
+  const FetchData = async () => {
+    const res = await get<DataType[]>("http://localhost:5002/salary/List");
+
+    if (res) {
+      setSalary(res.data);
+    }
+  };
+
+  useEffect(() => {
+    FetchData();
+  }, []);
+
 
   return (
     <div style={{ width: "100%" }}>
@@ -88,7 +94,7 @@ const SalaryTable = () => {
         </Link>
       </EmployeeAdd>
 
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={salary} />
     </div>
   );
 };

@@ -29,7 +29,7 @@ namespace LeaveManagment.Controllers
         {
             if (model == null)
                 return Ok(false);
-        await _repo.Post(model);
+            await _repo.Post(model);
             return Ok(true);
         }
 
@@ -39,7 +39,7 @@ namespace LeaveManagment.Controllers
             var data = await _repo.getEmployee(id);
             return Ok(data);
         }
-            [HttpGet("List")]
+        [HttpGet("List")]
         public async Task<ActionResult<List<Employee>>> GetEmployeeList()
         {
             var data = await _repo.getList();

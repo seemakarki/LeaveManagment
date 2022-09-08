@@ -65,7 +65,7 @@ const SidebarMenu = () => {
     }
     if (menuModel?.key === "5") {
       localStorage.clear();
-      window.location.href = "/login";
+      window.location.href = "/";
     }
   };
 

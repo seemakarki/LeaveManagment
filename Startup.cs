@@ -68,7 +68,7 @@ namespace LeaveManagment
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
                 {
                     options.LoginPath = "/login";
-                    options.ExpireTimeSpan = TimeSpan.FromHours(10);
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
                 });
 
             services.AddSwaggerGen(c =>
@@ -118,7 +118,9 @@ namespace LeaveManagment
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
             });
         }
     }

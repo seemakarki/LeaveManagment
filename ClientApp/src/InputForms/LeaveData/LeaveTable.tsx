@@ -5,6 +5,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { get } from "../../services/authAjaxService";
 import TopBar from "../TopBar";
 
 interface DataType {
@@ -19,10 +20,10 @@ interface DataType {
 }
 
 const LeaveTable = () => {
-  const [leaveEmployee, setLeaveEmployee] = useState<any>([]);
+  const [leaveEmployee, setLeaveEmployee] = useState<DataType[]>([]);
 
   const FetchData = async () => {
-    const res = await axios.get("http://localhost:5002/leave/List");
+    const res = await get<DataType[]>("http://localhost:5002/leave/List");
 
     if (res) {
       setLeaveEmployee(res.data);

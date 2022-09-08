@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import SidebarMenu from "../../components/SidebarMenu";
+import { post } from "../../services/authAjaxService";
 import { showSuccessMessage } from "../../services/user.service";
 import { employee } from "../EmployeeTable";
 import TopBar from "../TopBar";
@@ -40,7 +41,7 @@ const LeaveForm = () => {
   const [form] = useForm();
   const history = useHistory();
   const onFinish = async (values: any) => {
-    const response = await axios.post<any>("http://localhost:5002/leave", {
+    const response = await post<any>("http://localhost:5002/leave", {
       employeeId: Number(values.employee),
       type: values.leavetype,
       status: values.status,
